@@ -1,3 +1,6 @@
 [submodule "hypr/plugins/hyprland-plugins"]
 	path = hypr/plugins/hyprland-plugins
 	url = https://github.com/levnikmyskin/hyprland-virtual-desktops
+[submodule "hyprland_plugins/hyprland-virtual-desktops"]
+	path = hyprland_plugins/hyprland-virtual-desktops
+	url = https://github.com/levnikmyskin/hyprland-virtual-desktops

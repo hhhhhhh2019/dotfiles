@@ -1,116 +1,61 @@
-local plugins = {
-	{"nvim-telescope/telescope.nvim",
-		dependencies = {"nvim-lua/plenary.nvim"}
-	},
+require("lazy").setup({
+	{"nvim-lualine/lualine.nvim", dependencies = {
+		"nvim-tree/nvim-web-devicons"
+	}},
 
-	"nvim-tree/nvim-web-devicons",
+	{"Mofiqul/dracula.nvim"},
 
-	"nvim-treesitter/nvim-treesitter",
+	{"folke/which-key.nvim"},
 
-	"lewis6991/gitsigns.nvim",
+	{"nvim-telescope/telescope.nvim", dependencies = {
+		"nvim-lua/plenary.nvim"
+	}},
 
-	{"nvim-tree/nvim-tree.lua",
-		dependencies = {"nvim-tree/nvim-web-devicons"}
-	},
+	{"nvim-telescope/telescope-ui-select.nvim", dependencies = {
+		"nvim-telescope/telescope.nvim"
+	}},
 
-	"NvChad/nvim-colorizer.lua",
+	{"debugloop/telescope-undo.nvim"},
 
-	"sunjon/Shade.nvim",
+	{"nvim-treesitter/nvim-treesitter"},
+	{"windwp/nvim-ts-autotag"},
 
-	"Mofiqul/dracula.nvim",
+	{"neovim/nvim-lspconfig"},
 
-	"tiagovla/scope.nvim",
+	{"hrsh7th/nvim-cmp"},
+	{"hrsh7th/cmp-nvim-lsp"},
+	{"hrsh7th/cmp-path"},
+	{"tzachar/cmp-fuzzy-buffer", dependencies = {
+		{"tzachar/fuzzy.nvim", dependencies = {
+			{ 'nvim-telescope/telescope-fzf-native.nvim', build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
+		}}
+	}},
 
-	--{"NTBBloodbath/galaxyline.nvim",
-	--	dependencies = {"NTBBloodbath/galaxyline.nvim"}
-	--},
-	
-	{"nvim-lualine/lualine.nvim",
-		dependencies = "nvim-tree/nvim-web-devicons"
-	},
+	{"lewis6991/gitsigns.nvim"},
 
-	--{"romgrk/barbar.nvim",
-	--	dependencies = {"lewis6991/gitsigns.nvim"}
-	--},
+	-- {"norcalli/nvim-colorizer.lua"},
+	{"NvChad/nvim-colorizer.lua"},
 
-	{"akinsho/bufferline.nvim",
-		dependencies = {"nvim-tree/nvim-web-devicons"}
-	},
+	{"jghauser/mkdir.nvim"},
 
-	"yamatsum/nvim-cursorline",
+	{"karb94/neoscroll.nvim"},
+	{"declancm/cinnamon.nvim"},
 
-	{"nvimdev/dashboard-nvim",
-		dependencies = {"nvim-tree/nvim-web-devicons"}
-	},
+	{"numToStr/Comment.nvim"},
 
-	"edluffy/hologram.nvim",
+	{"filipdutescu/renamer.nvim"},
 
-	"jghauser/mkdir.nvim",
+	{"tiagovla/scope.nvim"},
 
-	"mfussenegger/nvim-dap",
+	{"windwp/nvim-autopairs"},
 
-	"mfussenegger/nvim-dap-python",
+	{"gelguy/wilder.nvim"},
 
-	{"rcarriga/nvim-dap-ui",
-		dependencies = {"mfussenegger/nvim-dap"}
-	},
+	{"gsuuon/llm.nvim"},
 
-	{"niuiic/dap-utils.nvim",
-		dependencies = {"mfussenegger/nvim-dap"}
-	},
-	
-	{"kevinhwang91/nvim-bqf",
-		dependencies = {"nvim-treesitter/nvim-treesitter"}
-	},
+	{"echasnovski/mini.nvim"},
 
-	"NeogitOrg/neogit",
+	{"qpkorr/vim-bufkill"},
 
-	"folke/which-key.nvim",
-
-	"karb94/neoscroll.nvim",
-	"declancm/cinnamon.nvim",
-
-	{"windwp/nvim-ts-autotag",
-		dependencies = {"nvim-treesitter/nvim-treesitter"}
-	},
-
-	"windwp/nvim-autopairs",
-
-	{"filipdutescu/renamer.nvim",
-		dependencies = "nvim-lua/plenary.nvim"
-	},
-
-	"numToStr/Comment.nvim",
-
-	{"debugloop/telescope-undo.nvim",
-		dependencies = {"nvim-telescope/telescope.nvim"}
-	},
-
-	"qpkorr/vim-bufkill",
-
-	"neovim/nvim-lspconfig",
-
-	"hrsh7th/nvim-cmp",
-	"hrsh7th/cmp-nvim-lsp",
-	"hrsh7th/cmp-buffer",
-	"hrsh7th/cmp-path",
-	{"nvim-telescope/telescope-fzf-native.nvim", build = "make"},
-	{"tzachar/cmp-fuzzy-buffer",
-		dependencies = {"tzachar/fuzzy.nvim"}
-	},
-	"kdheepak/cmp-latex-symbols",
-	"ray-x/cmp-treesitter",
-	"amarakon/nvim-cmp-buffer-lines",
-
-	"godlygeek/tabular",
-
-	"mg979/vim-visual-multi",
-
-	"folke/neodev.nvim",
-
-	"nmac427/guess-indent.nvim",
-
-	"gelguy/wilder.nvim",
-}
-
-require("lazy").setup(plugins)
+	-- {"Vonr/align.nvim"},
+})
