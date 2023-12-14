@@ -1,15 +1,17 @@
-vim.opt.number = true
-vim.opt.list = true
-vim.opt.tabstop = 2
+vim.opt.number     = true
+vim.opt.list       = true
+vim.opt.tabstop    = 2
 vim.opt.shiftwidth = 2
 
-vim.o.timeout = true
-vim.o.timeoutlen = 300
+vim.o.timeout      = true
+vim.o.timeoutlen   = 300
 
-vim.opt.confirm = true
-vim.opt.filetype = "on"
+vim.opt.confirm    = true
+vim.opt.filetype   = "on"
 
 vim.opt.clipboard:append { "unnamed", "unnamedplus" }
+
+vim.opt.autoread = true
 
 vim.cmd("colorscheme dracula")
 
@@ -20,7 +22,7 @@ require("lualine").setup({
 		theme = "dracula-nvim",
 
 		component_separators = { left = "", right = ""},
-		section_separators = { left = "", right = ""},
+		section_separators   = { left = "", right = ""},
 	},
 
 	sections = {
@@ -103,7 +105,14 @@ cmp.setup({
 		{name = "nvim_lsp"},
 		{name = "path"},
 		{name = "fuzzy_buffer"},
+		{name = "luasnip"},
 	}),
+
+	snippet = {
+		expand = function(args)
+			require("luasnip").lsp_expand(args.body)
+		end
+	},
 
 	window = {
 		completion = {
@@ -234,13 +243,139 @@ wilder.set_option('renderer', wilder.popupmenu_renderer(
 
 
 
-require("mini.align").setup({
-	
+-- require("mini.align").setup({
+-- 	
+-- })
+
+
+-- functions
+
+-- https://gist.github.com/GnikDroy/c35ca0adaeca4f3c6e6193dd4abe6a0f
+
+local function split(line, pattern)
+	if #pattern == 0 or #line == 0 then return { line } end
+	local sections = {}
+	local index = 1
+	while index <= #line do
+		local start_idx, end_idx = string.find(line, pattern, index)
+		if start_idx ~= nil and end_idx >= start_idx then
+			table.insert(sections, string.sub(line, index, start_idx - 1))
+			table.insert(sections, string.sub(line, start_idx, end_idx))
+			index = end_idx + 1
+		else
+			table.insert(sections, string.sub(line, index, #line))
+			index = #line + 1
+		end
+	end
+	return sections
+end
+
+local function compute_max_section_widths(splits)
+	local max_split_length = 0
+	for _, parts in ipairs(splits) do
+		max_split_length = math.max(max_split_length, #parts)
+	end
+
+	local max_section_widths = {}
+	for i = 1, max_split_length do
+		max_section_widths[i] = 0
+	end
+
+	for _, parts in ipairs(splits) do
+		if #parts ~= 1 then
+			for i, part in ipairs(parts) do
+				max_section_widths[i] = math.max(max_section_widths[i], #part)
+			end
+		end
+	end
+	return max_section_widths
+end
+
+local function align_line_right(parts, max_section_widths)
+	for i, part in ipairs(parts) do
+		-- last part doesn't need to be padded if empty string
+		if #part ~= 0 or #parts ~= i then
+			parts[i] = string.rep(" ", max_section_widths[i] - #part) .. part
+		end
+	end
+	return parts
+end
+
+local function align_line_left(parts, max_section_widths)
+	for i, part in ipairs(parts) do
+		if i ~= #parts then -- last part doesn't need to be padded
+			parts[i] = part .. string.rep(" ", max_section_widths[i] - #part)
+		end
+	end
+	return parts
+end
+
+local function align_line_center(parts, max_section_widths)
+	for i = 1, #parts do
+		local left_pad = math.floor((max_section_widths[i] - #parts[i]) / 2)
+		parts[i] = string.rep(" ", left_pad) .. parts[i]
+		local right_pad = max_section_widths[i] - #parts[i]
+		-- last part doesn't need to be padded on the right
+		if i ~= #parts then
+			parts[i] = parts[i] .. string.rep(" ", right_pad)
+		end
+	end
+	return parts
+end
+
+local function align_all_lines(lines, pattern, align_fn)
+	local splits = {}
+	for _, line in ipairs(lines) do
+		table.insert(splits, split(line, pattern))
+	end
+	local max_section_widths = compute_max_section_widths(splits)
+
+	local new_lines = {}
+	for _, parts in ipairs(splits) do
+		local new_line = {}
+		-- No need to align only one part
+		local aligned = #parts == 1 and parts or align_fn(parts, max_section_widths)
+		for _, part in ipairs(aligned) do
+			table.insert(new_line, part)
+		end
+		table.insert(new_lines, table.concat(new_line))
+	end
+	return new_lines
+end
+
+local function align_all_selection(pattern, align_fn)
+	local top, bot = vim.fn.getpos("'<"), vim.fn.getpos("'>")
+	local startline = top[2] - 1
+	local endline = bot[2]
+		if startline > endline then
+			tmp = startline
+			startline = endline
+			endline = tmp
+		end
+	local lines = vim.api.nvim_buf_get_lines(0, startline, endline, false)
+	lines = align_all_lines(lines, pattern, align_fn)
+	vim.api.nvim_buf_set_lines(0, startline, endline, false, lines)
+	vim.fn.setpos("'<", top)
+	vim.fn.setpos("'>", bot)
+end
+
+local function create_preview_fn(align_fn)
+	return function(opts, _, _)
+		align_all_selection(opts.args, align_fn)
+		return 1
+	end
+end
+
+
+
+
+vim.api.nvim_create_user_command("Align", function(opts)
+	align_all_selection(opts.args, align_line_left)
+end, {
+	range = true,
+	nargs = "+",
+	preview = create_preview_fn(align_line_left)
 })
-
-
-
-
 
 
 -- keybinds
@@ -261,12 +396,21 @@ wk.register({
 
 	["<space>t"] = {tb.treesitter, "lists function names, variables, from Treesitter"},
 
+	["<space>aa"] = {
+		function()
+			align_all_selection(vim.fn.input("Align character: "), align_line_left)
+		end, "align", mode = "v"
+	},
+
 	--["<space>a"]
 
 	["fb"] = {tb.buffers, "show buffers"},
 	["ff"] = {tb.find_files, "find files"},
 	["fg"] = {tb.live_grep, "live grep"},
 })
+
+vim.keymap.set('n', "x", "\"_x")
+vim.keymap.set('v', "x", "\"_x")
 
 vim.keymap.set('n', "<C-Up>", "<cmd>wincmd k<cr>")
 vim.keymap.set('n', "<C-Down>", "<cmd>wincmd j<cr>")

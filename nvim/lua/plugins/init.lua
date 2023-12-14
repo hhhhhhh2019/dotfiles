@@ -30,6 +30,7 @@ require("lazy").setup({
 			{ 'nvim-telescope/telescope-fzf-native.nvim', build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
 		}}
 	}},
+	{"saadparwaiz1/cmp_luasnip"},
 
 	{"lewis6991/gitsigns.nvim"},
 
@@ -58,4 +59,10 @@ require("lazy").setup({
 	{"qpkorr/vim-bufkill"},
 
 	-- {"Vonr/align.nvim"},
+
+	{"L3MON4D3/LuaSnip", build = "make install_jsregexp"},
+
+	{"00sapo/visual.nvim"},
+
+	{"mg979/vim-visual-multi"},
 })
