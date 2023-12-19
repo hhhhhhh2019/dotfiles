@@ -65,4 +65,6 @@ require("lazy").setup({
 	{"00sapo/visual.nvim"},
 
 	{"mg979/vim-visual-multi"},
+
+	{"RaafatTurki/hex.nvim"},
 })

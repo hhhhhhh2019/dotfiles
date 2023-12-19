@@ -378,6 +378,10 @@ end, {
 })
 
 
+
+require("hex").setup()
+
+
 -- keybinds
 
 
