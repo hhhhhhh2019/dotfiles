@@ -409,8 +409,8 @@ wk.register({
 	["fg"] = {tb.live_grep, "live grep"},
 })
 
-vim.keymap.set('n', "x", "\"_x")
-vim.keymap.set('v', "x", "\"_x")
+-- vim.keymap.set('n', "x", "\"_x")
+-- vim.keymap.set('v', "x", "\"_x")
 
 vim.keymap.set('n', "<C-Up>", "<cmd>wincmd k<cr>")
 vim.keymap.set('n', "<C-Down>", "<cmd>wincmd j<cr>")
