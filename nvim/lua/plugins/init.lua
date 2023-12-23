@@ -58,6 +58,8 @@ require("lazy").setup({
 
 	{"qpkorr/vim-bufkill"},
 
+	{"echasnovski/mini.align"},
+
 	-- {"Vonr/align.nvim"},
 
 	{"L3MON4D3/LuaSnip", build = "make install_jsregexp"},
@@ -67,4 +69,6 @@ require("lazy").setup({
 	{"mg979/vim-visual-multi"},
 
 	{"RaafatTurki/hex.nvim"},
+
+	{"onsails/lspkind.nvim"},
 })

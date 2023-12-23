@@ -1,13 +1,13 @@
-vim.opt.number     = true
-vim.opt.list       = true
-vim.opt.tabstop    = 2
+vim.opt.number		 = true
+vim.opt.list			 = true
+vim.opt.tabstop		= 2
 vim.opt.shiftwidth = 2
 
-vim.o.timeout      = true
-vim.o.timeoutlen   = 300
+vim.o.timeout			= true
+vim.o.timeoutlen	 = 300
 
-vim.opt.confirm    = true
-vim.opt.filetype   = "on"
+vim.opt.confirm		= true
+vim.opt.filetype	 = "on"
 
 vim.opt.clipboard:append { "unnamed", "unnamedplus" }
 
@@ -22,7 +22,7 @@ require("lualine").setup({
 		theme = "dracula-nvim",
 
 		component_separators = { left = "", right = ""},
-		section_separators   = { left = "", right = ""},
+		section_separators	 = { left = "", right = ""},
 	},
 
 	sections = {
@@ -83,19 +83,28 @@ require("telescope").load_extension("ui-select")
 require("telescope").load_extension("undo")
 
 
-require("lspconfig").pyright.setup({
-
-})
-
-
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+
+require("lspconfig").pyright.setup({
+	capabilities = capabilities,
+})
 
 require("lspconfig").clangd.setup({
 	capabilities = capabilities,
 })
 
+require("lspconfig").bashls.setup({
+	capabilities = capabilities,
+})
 
-require("lspconfig").quick_lint_js.setup({})
+require("lspconfig").lua_ls.setup({
+	capabilities = capabilities,
+})
+
+require("lspconfig").quick_lint_js.setup({
+	capabilities = capabilities,
+})
 
 
 local cmp = require("cmp")
@@ -127,9 +136,35 @@ cmp.setup({
 
 	mapping = cmp.mapping.preset.insert({
 		["<M-d>"] = cmp.mapping.complete(),
-		["<M-q>"] = cmp.mapping.confirm({ select = true }),
+		["<M-q>"] = cmp.mapping.confirm({select = true, behavior=cmp.ConfirmBehavior.Replace}),
 		["<M-e>"] = cmp.mapping.abort(),
-	})
+		["<M-a>"] = cmp.mapping.select_next_item({behavior = cmp.SelectBehavior.Select}),
+		["<M-s>"] = cmp.mapping.select_prev_item({behavior = cmp.SelectBehavior.Select})
+	}),
+
+	preselect = cmp.PreselectMode.Item,
+
+	completion = {
+		keyword_length = 3,
+	},
+
+	experimental = {
+		ghost_text = true
+	},
+
+	formatting = {
+		format = function(entry, vim_item)
+			if vim.tbl_contains({ 'path' }, entry.source.name) then
+				local icon, hl_group = require('nvim-web-devicons').get_icon(entry:get_completion_item().label)
+				if icon then
+					vim_item.kind = icon
+					vim_item.kind_hl_group = hl_group
+					return vim_item
+				end
+			end
+			return require('lspkind').cmp_format({ with_text = false })(entry, vim_item)
+		end
+	}
 })
 
 
@@ -243,9 +278,11 @@ wilder.set_option('renderer', wilder.popupmenu_renderer(
 
 
 
--- require("mini.align").setup({
--- 	
--- })
+require("mini.align").setup({
+	mappings = {
+		start_with_preview = '<space>a',
+	},
+})
 
 
 -- functions
@@ -347,11 +384,11 @@ local function align_all_selection(pattern, align_fn)
 	local top, bot = vim.fn.getpos("'<"), vim.fn.getpos("'>")
 	local startline = top[2] - 1
 	local endline = bot[2]
-		if startline > endline then
-			tmp = startline
-			startline = endline
-			endline = tmp
-		end
+	if startline > endline then
+		tmp = startline
+		startline = endline
+		endline = tmp
+	end
 	local lines = vim.api.nvim_buf_get_lines(0, startline, endline, false)
 	lines = align_all_lines(lines, pattern, align_fn)
 	vim.api.nvim_buf_set_lines(0, startline, endline, false, lines)
@@ -400,11 +437,29 @@ wk.register({
 
 	["<space>t"] = {tb.treesitter, "lists function names, variables, from Treesitter"},
 
-	["<space>aa"] = {
-		function()
-			align_all_selection(vim.fn.input("Align character: "), align_line_left)
-		end, "align", mode = "v"
-	},
+	-- ["<space>aa"] = {
+	-- 	function()
+	-- 		require("align").align_to_string({
+	-- 				preview = true,
+	-- 				regex = false
+	-- 		})
+	-- 	end, "align", mode = "v"
+	-- },
+	--
+	-- ["<space>ar"] = {
+	-- 	function()
+	-- 		require("align").align_to_string({
+	-- 				preview = true,
+	-- 				regex = true
+	-- 		})
+	-- 	end, "align with regex", mode = "v"
+	-- },
+
+	-- {
+	-- 	function()
+	-- 		align_all_selection(vim.fn.input("Align character: "), align_line_left)
+	-- 	end, "align", mode = "v"
+	-- },
 
 	--["<space>a"]
 
