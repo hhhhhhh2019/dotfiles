@@ -4,6 +4,7 @@ require("lazy").setup({
 	}},
 
 	{"Mofiqul/dracula.nvim"},
+	{"catppuccin/nvim", name = "catppuccin"},
 
 	{"folke/which-key.nvim"},
 
@@ -71,4 +72,11 @@ require("lazy").setup({
 	{"RaafatTurki/hex.nvim"},
 
 	{"onsails/lspkind.nvim"},
+
+	{"mfussenegger/nvim-dap"},
+	{"rcarriga/nvim-dap-ui"},
+
+	{"folke/neodev.nvim"},
+
+	{"j-hui/fidget.nvim"},
 })

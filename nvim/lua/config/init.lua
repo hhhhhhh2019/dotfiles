@@ -13,13 +13,98 @@ vim.opt.clipboard:append { "unnamed", "unnamedplus" }
 
 vim.opt.autoread = true
 
-vim.cmd("colorscheme dracula")
+
+
+require("catppuccin").setup({
+	flavour = "mocha",
+	background = {
+		light = "latte",
+		dark = "mocha",
+	},
+	transparent_background = false,
+	show_end_of_buffer = false,
+	term_colors = true,
+	dim_inactive = {
+		enabled = true,
+		shade = "dark",
+		percentage = 0.15,
+	},
+	no_italic = false,
+	no_bold = false,
+	no_underline = false,
+	styles = {
+		comments = { "italic" },
+		conditionals = {},
+		loops = {},
+		functions = {},
+		keywords = { "underline" },
+		strings = { "italic" },
+		variables = {},
+		numbers = {},
+		booleans = {},
+		properties = {},
+		types = {},
+		operators = {},
+	},
+	color_overrides = {},
+	custom_highlights = {},
+	integrations = {
+		cmp = true,
+		gitsigns = true,
+		nvimtree = true,
+		treesitter = true,
+		notify = false,
+		markdown = true,
+		mini = {
+				enabled = true,
+				indentscope_color = "",
+		},
+		fidget = true,
+
+		dap = true,
+		dap_ui = true,
+
+		which_key = true,
+	},
+	native_lsp = {
+		enabled = true,
+		virtual_text = {
+				errors = { "italic" },
+				hints = { "italic" },
+				warnings = { "italic" },
+				information = { "italic" },
+		},
+		underlines = {
+				errors = { "underline" },
+				hints = { "underline" },
+				warnings = { "underline" },
+				information = { "underline" },
+		},
+		inlay_hints = {
+				background = true,
+		},
+},
+})
+
+--vim.cmd("colorscheme dracula")
+vim.cmd("colorscheme catppuccin")
+
+
+require("fidget").setup {
+	notification = {
+		window = {
+			winblend = 0,
+		},
+	}
+}
+
 
 
 require("lualine").setup({
 	options = {
 		icons_enabled = true,
-		theme = "dracula-nvim",
+		--theme = "dracula-nvim",
+		theme = "catppuccin",
 
 		component_separators = { left = "", right = ""},
 		section_separators	 = { left = "", right = ""},
@@ -100,6 +185,20 @@ require("lspconfig").bashls.setup({
 
 require("lspconfig").lua_ls.setup({
 	capabilities = capabilities,
+
+	settings = {
+		Lua = {
+			diagnostics = {
+				globals = {
+					'vim',
+					'require'
+				},
+			},
+			workspace = {
+				library = vim.api.nvim_get_runtime_file("", true),
+			}
+		}
+	}
 })
 
 require("lspconfig").quick_lint_js.setup({
@@ -129,7 +228,7 @@ cmp.setup({
 			scrollbar = "║",
 		},
 		documentation = {
-			border = nil,
+			border = "rounded",
 			scrollbar = "",
 		},
 	},
@@ -145,7 +244,7 @@ cmp.setup({
 	preselect = cmp.PreselectMode.Item,
 
 	completion = {
-		keyword_length = 3,
+		keyword_length = 1,
 	},
 
 	experimental = {
@@ -417,6 +516,128 @@ end, {
 
 
 require("hex").setup()
+
+
+
+require("neodev").setup({
+	library = { plugins = { "nvim-dap-ui" }, types = true },
+})
+
+
+local dap, dapui = require("dap"), require("dapui")
+
+-- dap.adapters.gdb = {
+-- 	type = "executable",
+-- 	command = "gdb",
+-- 	args = { "-i", "dap" }
+-- }
+--
+-- dap.configurations.c = {
+-- 	{
+-- 		name = "Launch",
+-- 		type = "gdb",
+-- 		request = "launch",
+-- 		program = function()
+-- 			return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+-- 		end,
+-- 		cwd = "${workspaceFolder}",
+-- 	}
+-- }
+
+
+dap.adapters.codelldb = {
+	type = 'server',
+	port = "${port}",
+	executable = {
+		command = '/usr/bin/codelldb',
+		args = {"--port", "${port}"},
+	}
+}
+
+dap.configurations.cpp = {
+	{
+		name = "Launch file",
+		type = "codelldb",
+		request = "launch",
+		program = function()
+			return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+		end,
+		cwd = '${workspaceFolder}',
+		stopOnEntry = false,
+	},
+}
+
+dap.configurations.c = dap.configurations.cpp
+dap.configurations.rust = dap.configurations.cpp
+
+
+dap.adapters.python = function(cb, config)
+	if config.request == 'attach' then
+		---@diagnostic disable-next-line: undefined-field
+		local port = (config.connect or config).port
+		---@diagnostic disable-next-line: undefined-field
+		local host = (config.connect or config).host or '127.0.0.1'
+		cb({
+			type = 'server',
+			port = assert(port, '`connect.port` is required for a python `attach` configuration'),
+			host = host,
+			options = {
+				source_filetype = 'python',
+			},
+		})
+	else
+		cb({
+			type = 'executable',
+			command = 'python',
+			args = { '-m', 'debugpy.adapter' },
+			options = {
+				source_filetype = 'python',
+			},
+		})
+	end
+end
+
+
+dap.configurations.python = {
+	{
+		type = 'python';
+		request = 'launch';
+		name = "Launch file";
+
+		program = "${file}";
+		pythonPath = function()
+			local cwd = vim.fn.getcwd()
+			if vim.fn.executable(cwd .. '/venv/bin/python') == 1 then
+				return cwd .. '/venv/bin/python'
+			elseif vim.fn.executable(cwd .. '/.venv/bin/python') == 1 then
+				return cwd .. '/.venv/bin/python'
+			else
+				return '/usr/bin/python'
+			end
+		end;
+	},
+}
+
+
+dapui.setup()
+
+
+dap.listeners.after.event_initialized["dapui_config"] = function()
+	dapui.open()
+end
+dap.listeners.before.event_terminated["dapui_config"] = function()
+	dapui.close()
+end
+dap.listeners.before.event_exited["dapui_config"] = function()
+	dapui.close()
+end
+
+
+local sign = vim.fn.sign_define
+
+sign("DapBreakpoint", { text = "●", texthl = "DapBreakpoint", linehl = "", numhl = ""})
+sign("DapBreakpointCondition", { text = "●", texthl = "DapBreakpointCondition", linehl = "", numhl = ""})
+sign("DapLogPoint", { text = "◆", texthl = "DapLogPoint", linehl = "", numhl = ""})
 
 
 -- keybinds
