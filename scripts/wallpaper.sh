@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 
-swww_flags="--transition-fps 120 --transition-step 90 -t wipe"
+swww_flags=(--transition-fps 120 --transition-step 90 -t wipe)
 
 
 init () {
@@ -12,7 +12,9 @@ init () {
 set () {
 	init
 
-	swww img $swww_flags "$HOME/.wallpapers/$1"
+	swww img "${swww_flags[@]}" "$HOME/.wallpapers/$1"
+
+	echo "${swww_flags[@]}"
 
 	echo "$1" > "$HOME/.last_wallpaper"
 }
@@ -20,10 +22,10 @@ set () {
 
 random () {
 	last_wallpaper=$(cat "$HOME/.last_wallpaper")
-	wallpaper=$(ls "$HOME/.wallpapers" | sort -R | head -1)
+	wallpaper=$(find "$HOME/.wallpapers/" -type f | shuf -n 1)
 
 	while [ "$last_wallpaper" == "$wallpaper" ]; do
-		wallpaper=$(ls "$HOME/.wallpapers" | sort -R | head -1)
+		wallpaper=$(find "$HOME/.wallpapers/" -type f | shuf -n 1)
 	done
 
 	set "$wallpaper"
@@ -46,11 +48,11 @@ restore () {
 rofi_select () {
 	result=$(
 
-	ls -1 "$HOME/.wallpapers" | while read A; do
+	find "$HOME/.wallpapers/" -type f -printf "%f\n" | while read -r A; do
 		echo -en "$A\x00icon\x1f~/.wallpapers/$A\n"
-	done | rofi -dmenu -theme $HOME/.config/rofi/launchers/type-2/style-8.rasi )
+	done | rofi -dmenu -theme "$HOME/.config/rofi/launchers/type-2/style-8.rasi" )
 
-	set $result
+	set "$result"
 }
 
 

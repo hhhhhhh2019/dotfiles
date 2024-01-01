@@ -16,6 +16,10 @@ require("lazy").setup({
 		"nvim-telescope/telescope.nvim"
 	}},
 
+	{"nvim-telescope/telescope-dap.nvim", dependencies = {
+		"nvim-telescope/telescope.nvim"
+	}},
+
 	{"debugloop/telescope-undo.nvim"},
 
 	{"nvim-treesitter/nvim-treesitter"},
@@ -75,8 +79,11 @@ require("lazy").setup({
 
 	{"mfussenegger/nvim-dap"},
 	{"rcarriga/nvim-dap-ui"},
+	{"theHamsta/nvim-dap-virtual-text"},
 
 	{"folke/neodev.nvim"},
 
 	{"j-hui/fidget.nvim"},
+
+	{"edluffy/hologram.nvim"},
 })

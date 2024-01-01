@@ -1,13 +1,13 @@
-vim.opt.number		 = true
-vim.opt.list			 = true
-vim.opt.tabstop		= 2
+vim.opt.number     = true
+vim.opt.list       = true
+vim.opt.tabstop    = 2
 vim.opt.shiftwidth = 2
 
-vim.o.timeout			= true
-vim.o.timeoutlen	 = 300
+vim.o.timeout      = true
+vim.o.timeoutlen   = 300
 
-vim.opt.confirm		= true
-vim.opt.filetype	 = "on"
+vim.opt.confirm    = true
+vim.opt.filetype   = "on"
 
 vim.opt.clipboard:append { "unnamed", "unnamedplus" }
 
@@ -30,7 +30,7 @@ require("catppuccin").setup({
 		percentage = 0.15,
 	},
 	no_italic = false,
-	no_bold = false,
+	no_bold = true,
 	no_underline = false,
 	styles = {
 		comments = { "italic" },
@@ -81,9 +81,9 @@ require("catppuccin").setup({
 				information = { "underline" },
 		},
 		inlay_hints = {
-				background = true,
+				background = false,
 		},
-},
+	},
 })
 
 --vim.cmd("colorscheme dracula")
@@ -160,12 +160,17 @@ require("telescope").setup({
 		},
 
 		undo = {
-		}
+		},
+
+		dap = {
+		},
 	}
 })
 
 require("telescope").load_extension("ui-select")
 require("telescope").load_extension("undo")
+require("telescope").load_extension("dap")
+
 
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -203,6 +208,16 @@ require("lspconfig").lua_ls.setup({
 
 require("lspconfig").quick_lint_js.setup({
 	capabilities = capabilities,
+})
+
+
+require("lspconfig").gdscript.setup({
+	capabilities = capabilities,
+
+	on_attach = on_attach,
+	flags = {
+		debounce_text_changes = 150,
+	}
 })
 
 
@@ -619,6 +634,11 @@ dap.configurations.python = {
 }
 
 
+require("nvim-dap-virtual-text").setup({
+	show_stop_reason = false
+})
+
+
 dapui.setup()
 
 
@@ -638,6 +658,12 @@ local sign = vim.fn.sign_define
 sign("DapBreakpoint", { text = "●", texthl = "DapBreakpoint", linehl = "", numhl = ""})
 sign("DapBreakpointCondition", { text = "●", texthl = "DapBreakpointCondition", linehl = "", numhl = ""})
 sign("DapLogPoint", { text = "◆", texthl = "DapLogPoint", linehl = "", numhl = ""})
+
+
+
+-- require('hologram').setup{
+-- 	auto_display = true
+-- }
 
 
 -- keybinds
@@ -696,6 +722,19 @@ vim.keymap.set('n', "<C-Up>", "<cmd>wincmd k<cr>")
 vim.keymap.set('n', "<C-Down>", "<cmd>wincmd j<cr>")
 vim.keymap.set('n', "<C-Left>", "<cmd>wincmd h<cr>")
 vim.keymap.set('n', "<C-Right>", "<cmd>wincmd l<cr>")
+
+vim.keymap.set('n', "<C-S-Down>", "<cmd>m +1<cr>")
+vim.keymap.set('n', "<C-S-Up>",   "<cmd>m -2<cr>")
+
+vim.keymap.set('n', "<F12>", function()
+	dapui.eval(vim.fn.input("dap eval "))
+end)
+vim.keymap.set('n', "<F3>", dapui.float_element)
+vim.keymap.set('n', "<F2>", dap.toggle_breakpoint)
+vim.keymap.set('n', "<F5>", dap.continue)
+vim.keymap.set('n', "<F11>", dap.step_into)
+vim.keymap.set('n', "<F10>", dap.step_over)
+vim.keymap.set('n', "<F9>", dap.step_out)
 
 vim.api.nvim_set_keymap('i', '<F2>', '<cmd>lua require("renamer").rename()<cr>', { noremap = true, silent = true })
 
