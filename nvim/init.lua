@@ -1,3 +1,6 @@
 require("core")
-require("plugins")
-require("config")
+require("core.mappings")
+
+require("lazy").setup("plugins")
+
+vim.cmd.colorscheme("catppuccin")
