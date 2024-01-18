@@ -9,6 +9,12 @@ vim.keymap.set('v', '<C-S-Left>', ':MoveHBlock(-1)<CR>', { noremap = true, silen
 vim.keymap.set('v', '<C-S-Right>', ':MoveHBlock(1)<CR>', { noremap = true, silent = true })
 
 
+vim.keymap.set('n', "<C-Up>", "<cmd>wincmd k<cr>")
+vim.keymap.set('n', "<C-Down>", "<cmd>wincmd j<cr>")
+vim.keymap.set('n', "<C-Left>", "<cmd>wincmd h<cr>")
+vim.keymap.set('n', "<C-Right>", "<cmd>wincmd l<cr>")
+
+
 return {
 	["<space>f"] = {name = "Telescope",
 		["f"] = {function()

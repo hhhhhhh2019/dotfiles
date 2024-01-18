@@ -6,16 +6,40 @@ return {
 -- 	mason_lsp.setup()
 -- end},
 
-	{"neovim/nvim-lspconfig",
+
+	{"folke/neodev.nvim",
 config = function()
+	local neodev = require("neodev")
+
+	neodev.setup({
+		library = {
+			enabled = true,
+			plugins = { "nvim-dap-ui" },
+			types = true,
+			runtime = true,
+		},
+		lspconfig = true,
+	})
+
+
+
+	-- neodev must be loaded before lspconfig
+
 	local lspconfig = require("lspconfig")
 
-	lspconfig.pyright.setup({})
-	lspconfig.clangd.setup({})
-	lspconfig.bashls.setup({})
-	lspconfig.lua_ls.setup({})
-	lspconfig.quick_lint_js.setup({})
-	lspconfig.gdscript.setup({})
-	lspconfig.julials.setup({})
+	local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+	lspconfig.pyright.setup({capabilities = capabilities,})
+	lspconfig.clangd.setup({capabilities = capabilities,})
+	lspconfig.bashls.setup({capabilities = capabilities,})
+	lspconfig.lua_ls.setup({capabilities = capabilities,})
+	lspconfig.quick_lint_js.setup({capabilities = capabilities,})
+	lspconfig.gdscript.setup({capabilities = capabilities,})
+	lspconfig.julials.setup({capabilities = capabilities,})
+end},
+
+
+	{"neovim/nvim-lspconfig",
+config = function()
 end}
 }

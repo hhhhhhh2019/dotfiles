@@ -7,16 +7,6 @@ return {
 -- end},
 
 
-	{"folke/neodev.nvim",
-config = function()
-	local neodev = require("neodev")
-
-	neodev.setup({
-		library = { plugins = { "nvim-dap-ui" }, types = true },
-	})
-end},
-
-
 	{"nvim-neorg/neorg",
 config = function()
 	local neorg = require("neorg")
@@ -153,7 +143,7 @@ config = function()
 	line.setup({
 		options = {
 			icons_enabled = true,
-			theme = "auto",
+			theme = "catppuccin",
 
 			component_separators = { left = "", right = ""},
 			section_separators = { left = "", right = ""},
@@ -256,13 +246,13 @@ end},
 	{"j-hui/fidget.nvim",
 config = function()
 	local fidget = require("fidget")
-	fidget.setup {
+	fidget.setup({
 		notification = {
 			window = {
 				winblend = 0,
 			},
 		}
-	}
+	})
 end},
 
 
