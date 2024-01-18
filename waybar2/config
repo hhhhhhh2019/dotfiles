@@ -31,7 +31,8 @@
 	"network": {
 		"format-ethernet": " 🠡 {bandwidthUpBytes} 🠧 {bandwidthDownBytes}",
 		"format-disconnected": "disconnected",
-		"max-length": 50
+		"max-length": 50,
+		"interval": 1
 	},
 	
 	"tray": {
@@ -99,13 +100,14 @@
 
 	"cpu": {
 		"interval": 1,
-		"format": "{icon0}{icon1}{icon2}{icon3}{icon4}{icon5} {usage}%",
+		"format": "{icon0}{icon1}{icon2}{icon3}{icon4}{icon5}{icon6}{icon7}{icon8}{icon9}{icon10}{icon11} {usage}%",
 		"format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
 	},
 
 	"temperature": {
 		"hwmon-path": "/sys/class/hwmon/hwmon4/temp1_input",
-		"format": "{temperatureC}°C "
+		"format": "{temperatureC}°C ",
+		"interval": 1
 	},
 
 	"memory": {

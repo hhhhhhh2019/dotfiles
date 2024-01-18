@@ -14,7 +14,6 @@ vim.opt.clipboard:append { "unnamed", "unnamedplus" }
 vim.opt.autoread = true
 
 
-
 require("catppuccin").setup({
 	flavour = "mocha",
 	background = {
@@ -146,6 +145,9 @@ require("nvim-treesitter.configs").setup({
 })
 
 
+local tb = require("telescope.builtin")
+local tt = require("telescope.themes")
+
 
 require("telescope").setup({
 	defaults = {
@@ -164,12 +166,17 @@ require("telescope").setup({
 
 		dap = {
 		},
+
+		howdoi = {
+			num_answers = 5,
+		},
 	}
 })
 
 require("telescope").load_extension("ui-select")
 require("telescope").load_extension("undo")
 require("telescope").load_extension("dap")
+require("telescope").load_extension("howdoi")
 
 
 
@@ -179,6 +186,10 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities()
 require("lspconfig").pyright.setup({
 	capabilities = capabilities,
 })
+
+-- require("lspconfig").pylsp.setup({
+-- 	capabilities = capabilities,
+-- })
 
 require("lspconfig").clangd.setup({
 	capabilities = capabilities,
@@ -221,7 +232,14 @@ require("lspconfig").gdscript.setup({
 })
 
 
+require("lspconfig").julials.setup({
+	capabilities = capabilities,
+})
+
+
 local cmp = require("cmp")
+
+cmp.event:on('confirm_done', require("nvim-autopairs.completion.cmp").on_confirm_done())
 
 cmp.setup({
 	sources = cmp.config.sources({
@@ -232,9 +250,9 @@ cmp.setup({
 	}),
 
 	snippet = {
-		expand = function(args)
-			require("luasnip").lsp_expand(args.body)
-		end
+		-- expand = function(args)
+		-- 	require("luasnip").lsp_expand(args.body)
+		-- end
 	},
 
 	window = {
@@ -260,6 +278,7 @@ cmp.setup({
 
 	completion = {
 		keyword_length = 1,
+		completeopt = "menu,menuone,noinsert,noselect",
 	},
 
 	experimental = {
@@ -661,6 +680,10 @@ sign("DapLogPoint", { text = "◆", texthl = "DapLogPoint", linehl = "", numhl =
 
 
 
+require("calculator")
+
+
+
 -- require('hologram').setup{
 -- 	auto_display = true
 -- }
@@ -669,8 +692,27 @@ sign("DapLogPoint", { text = "◆", texthl = "DapLogPoint", linehl = "", numhl =
 -- keybinds
 
 
-local tb = require("telescope.builtin")
-local tt = require("telescope.themes")
+function get_visual_selection()
+	local top, bot = vim.fn.getpos("'<"), vim.fn.getpos("'>")
+
+	local startline = top[2] - 1
+	local endline = bot[2]
+
+	print(top[0], top[1], top[2], top[3], bot[0], bot[1], bot[2], bot[3])
+
+	local lines = vim.api.nvim_buf_get_lines(0, startline, endline, false)
+
+	print(lines)
+end
+
+
+local function calculate_selection()
+	local selection = get_visual_selection()
+	--local result = vim.fn.eval(selection)
+	--print(result)
+end
+
+
 
 
 wk.register({
@@ -683,6 +725,10 @@ wk.register({
 	["<space>qd"] = {tb.diagnostics, "lists diagnostics for all open buffers"},
 
 	["<space>t"] = {tb.treesitter, "lists function names, variables, from Treesitter"},
+
+	["<space>m"] = {require("calculator").calculate, "calculate math expr", mode="v"},
+
+	-- ["<C-g>"] = {function () return vim.fn["codeium#Accept"]() end, "codeium accept", mode="i"},
 
 	-- ["<space>aa"] = {
 	-- 	function()
@@ -736,7 +782,14 @@ vim.keymap.set('n', "<F11>", dap.step_into)
 vim.keymap.set('n', "<F10>", dap.step_over)
 vim.keymap.set('n', "<F9>", dap.step_out)
 
-vim.api.nvim_set_keymap('i', '<F2>', '<cmd>lua require("renamer").rename()<cr>', { noremap = true, silent = true })
+vim.keymap.set('v', "<F12>", get_visual_selection)
+
+vim.keymap.set('i', "<F2>", require("renamer").rename)
+
+-- vim.keymap.set("i", "<C-g>", function() return vim.fn["codeium#Accept"]() end, { expr = true, silent = true })
+-- vim.keymap.set("i", "<c-;>", function() return vim.fn["codeium#CycleCompletions"](1) end, { expr = true, silent = true })
+-- vim.keymap.set("i", "<c-,>", function() return vim.fn["codeium#CycleCompletions"](-1) end, { expr = true, silent = true })
+-- vim.keymap.set("i", "<c-x>", function() return vim.fn["codeium#Clear"]() end, { expr = true, silent = true })
 
 --vim.keymap.set("n", "<space>dc", vim.lsp.buf.declaration)
 --vim.keymap.set("n", "<space>de", vim.lsp.buf.definition)

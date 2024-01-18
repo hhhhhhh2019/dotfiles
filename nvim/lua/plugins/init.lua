@@ -86,4 +86,12 @@ require("lazy").setup({
 	{"j-hui/fidget.nvim"},
 
 	{"edluffy/hologram.nvim"},
+
+	{"sindrets/diffview.nvim"},
+
+	{"vzze/calculator.nvim"},
+
+	{"Zane-/howdoi.nvim"},
+
+	{"Exafunction/codeium.vim"},
 })
