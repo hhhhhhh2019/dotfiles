@@ -29,7 +29,17 @@ config = function()
 
 		indent = {
 			enable = false,
-		}
+		},
+
+		incremental_selection = {
+			enable = true,
+			keymaps = {
+				init_selection = "gnn",
+				node_incremental = "grn",
+				scope_incremental = "grc",
+				node_decremental = "grm",
+			},
+		},
 	})
 end},
 
@@ -63,7 +73,12 @@ end},
 	{"lukas-reineke/indent-blankline.nvim",
 config = function()
 	local ib = require("ibl")
-	--ib.setup()
+	ib.setup({
+		indent = {
+			char = '▎',
+			tab_char = '▎',
+		}
+	})
 end},
 
 	{"catppuccin/nvim", name = "catppuccin",
