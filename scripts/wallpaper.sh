@@ -50,7 +50,9 @@ rofi_select () {
 
 	find "$HOME/.wallpapers/" -type f -printf "%f\n" | while read -r A; do
 		echo -en "$A\x00icon\x1f~/.wallpapers/$A\n"
-	done | rofi -dmenu -theme "$HOME/.config/rofi/launchers/type-2/style-8.rasi" )
+	done | rofi -dmenu -theme "$HOME/.config/rofi/config/launcher.rasi" )
+
+	# "$HOME/.config/rofi/launchers/type-2/style-8.rasi"
 
 	set "$result"
 }
