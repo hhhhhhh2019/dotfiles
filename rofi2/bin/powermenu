@@ -71,7 +71,7 @@ chosen="$(echo -e "$options" | $rofi_command -p "UP - $uptime" -dmenu -selected-
 case $chosen in
     $shutdown)
 		ans=$(rdialog &)
-		if [[ $ans == "yes" ]] || [[ $ans == "YES" ]] || [[ $ans == "y" ]]; then
+		if [[ $ans == "yes" ]] || [[ $ans == "YES" ]] || [[ $ans == "y" ]] || [[ $ans == "" ]]; then
 			systemctl poweroff
 		elif [[ $ans == "no" ]] || [[ $ans == "NO" ]] || [[ $ans == "n" ]]; then
 			exit
@@ -81,7 +81,7 @@ case $chosen in
         ;;
     $reboot)
 		ans=$(rdialog &)
-		if [[ $ans == "yes" ]] || [[ $ans == "YES" ]] || [[ $ans == "y" ]]; then
+		if [[ $ans == "yes" ]] || [[ $ans == "YES" ]] || [[ $ans == "y" ]] || [[ $ans == "" ]]; then
 			systemctl reboot
 		elif [[ $ans == "no" ]] || [[ $ans == "NO" ]] || [[ $ans == "n" ]]; then
 			exit
@@ -94,7 +94,7 @@ case $chosen in
         ;;
     $suspend)
 		ans=$(rdialog &)
-		if [[ $ans == "yes" ]] || [[ $ans == "YES" ]] || [[ $ans == "y" ]]; then
+		if [[ $ans == "yes" ]] || [[ $ans == "YES" ]] || [[ $ans == "y" ]] || [[ $ans == "" ]]; then
 			mpc -q pause
 			amixer set Master mute
 			sh $HOME/.local/bin/lock
@@ -107,7 +107,7 @@ case $chosen in
         ;;
     $logout)
 		ans=$(rdialog &)
-		if [[ $ans == "yes" ]] || [[ $ans == "YES" ]] || [[ $ans == "y" ]]; then
+		if [[ $ans == "yes" ]] || [[ $ans == "YES" ]] || [[ $ans == "y" ]] || [[ $ans == "" ]]; then
 			bspc quit
 		elif [[ $ans == "no" ]] || [[ $ans == "NO" ]] || [[ $ans == "n" ]]; then
 			exit

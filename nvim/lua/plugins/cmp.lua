@@ -42,13 +42,13 @@ config = function()
 			end,
 		},
 
-		mapping = cmp.mapping.preset.insert({
+		mapping = {
 			["<M-d>"] = cmp.mapping.complete(),
 			["<M-q>"] = cmp.mapping.confirm({select = true, behavior=cmp.ConfirmBehavior.Replace}),
 			["<M-e>"] = cmp.mapping.abort(),
 			["<M-a>"] = cmp.mapping.select_next_item({behavior = cmp.SelectBehavior.Select}),
 			["<M-s>"] = cmp.mapping.select_prev_item({behavior = cmp.SelectBehavior.Select})
-		}),
+		},
 
 		preselect = cmp.PreselectMode.Item,
 
