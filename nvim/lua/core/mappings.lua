@@ -50,6 +50,11 @@ return {
 	},
 
 
+	["<F3>"] = {function()
+		require("renamer").rename()
+	end, "rename", mode="i"},
+
+
 	["<F2>"] = {function()
 		require("dap").toggle_breakpoint()
 	end, "toggle breakpoint"},

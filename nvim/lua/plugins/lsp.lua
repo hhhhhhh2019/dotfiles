@@ -29,17 +29,23 @@ config = function()
 
 	local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-	lspconfig.pyright.setup({capabilities = capabilities,})
-	lspconfig.clangd.setup({capabilities = capabilities,})
-	lspconfig.bashls.setup({capabilities = capabilities,})
-	lspconfig.lua_ls.setup({capabilities = capabilities,})
-	lspconfig.quick_lint_js.setup({capabilities = capabilities,})
-	lspconfig.gdscript.setup({capabilities = capabilities,})
-	lspconfig.julials.setup({capabilities = capabilities,})
+	lspconfig.pyright.setup      ({capabilities = capabilities})
+	lspconfig.clangd.setup       ({capabilities = capabilities})
+	lspconfig.bashls.setup       ({capabilities = capabilities})
+	lspconfig.lua_ls.setup       ({capabilities = capabilities})
+	lspconfig.quick_lint_js.setup({capabilities = capabilities})
+	lspconfig.gdscript.setup     ({capabilities = capabilities})
+	lspconfig.julials.setup      ({capabilities = capabilities})
 end},
 
 
 	{"neovim/nvim-lspconfig",
 config = function()
-end}
+end},
+
+
+	{"filipdutescu/renamer.nvim",
+config = function()
+	require("renamer").setup({})
+end},
 }

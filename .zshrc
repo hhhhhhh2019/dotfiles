@@ -27,6 +27,5 @@ alias hx="helix"
 
 #zprof
 
-# Created by `pipx` on 2023-12-19 17:15:55
 export PATH="$PATH:/home/alex/.local/bin"
 export PATH="$PATH:/home/alex/.config/emacs/bin"
