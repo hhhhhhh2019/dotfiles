@@ -138,6 +138,7 @@
 		"autosens": 1,
 		"bar_delimiter": 0,
 		"input_delay": 2,
+		"sleep_timer": 10,
 		"waves": true,
 		"format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
 	},
