@@ -31,6 +31,10 @@ config = function()
 			enable = false,
 		},
 
+		autotag = {
+			enable = true,
+		},
+
 		incremental_selection = {
 			enable = true,
 			keymaps = {
@@ -170,6 +174,7 @@ config = function()
 			lualine_a = {"mode"},
 			lualine_b = {
 				"filename",
+				"filetype",
 				{"diagnostics",
 					sources = {"nvim_diagnostic"},
 					-- symbols = {error = ' ', warn = ' ', info = ' '},
@@ -293,7 +298,10 @@ config = function()
 end},
 
 
-	{"fedepujol/move.nvim"},
+	{"fedepujol/move.nvim",
+config = function()
+	require("move").setup({})
+end},
 
 
 	{"kevinhwang91/nvim-ufo",
@@ -350,4 +358,10 @@ end},
 -- 		
 -- 	})
 -- end},
+
+
+	{"windwp/nvim-ts-autotag",
+config = function()
+	require("nvim-ts-autotag").setup()
+end},
 }

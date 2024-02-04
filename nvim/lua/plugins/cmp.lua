@@ -6,6 +6,8 @@ return {
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-nvim-lua",
+			"saadparwaiz1/cmp_luasnip",
+			"L3MON4D3/LuaSnip",
 			{"tzachar/cmp-fuzzy-buffer", dependencies = {
 				{"tzachar/fuzzy.nvim", dependencies = {
 					{ 'nvim-telescope/telescope-fzf-native.nvim', build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }

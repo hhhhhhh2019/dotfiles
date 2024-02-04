@@ -133,7 +133,7 @@
 	"cava": {
 		"framerate": 60,
 		"method": "pipewire",
-		"bars": 12,
+		"bars": 24,
 		"stereo": true,
 		"autosens": 1,
 		"bar_delimiter": 0,
