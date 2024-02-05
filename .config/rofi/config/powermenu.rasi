@@ -38,12 +38,12 @@ prompt {
 
 textbox-prompt-colon {
     expand: 			            false;
-    str: 			                "";
+    str: 			                "⏻"; // 
     border-radius:                  100%;
     background-color:               @BG;
     text-color:                     @BG;
     padding:                        8px 12px 8px 12px;
-    font:			                "Iosevka Nerd Font 10";
+    //font:			                "Iosevka Nerd Font 10";
 }
 
 entry {
@@ -117,7 +117,7 @@ element-icon {
 element-text {
     background-color: 		        inherit;
     text-color:       		        inherit;
-    font:			                "feather 20";
+    font:			                "FiraCode Nerd Font Mono 20"; // feather 
     expand:                         true;
     horizontal-align:               0.5;
     vertical-align:                 0.5;

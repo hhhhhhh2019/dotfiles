@@ -20,17 +20,24 @@ else
 	if [[ "$layout" == "TRUE" ]]; then
   # Section 1
 
-		shutdown=""
-		reboot=""
-		lock=""
-		suspend=""
-		logout=""
+	
+	shutdown="襤"
+	reboot=""
+	lock=""
+	suspend="鈴"
+	logout="󰍃"
+
+		# shutdown=""
+		# reboot=""
+		# lock=""
+		# suspend=""
+		# logout=""
   # Section 2
-#		shutdown="襤"
-#		reboot="ﰇ"
-#		lock=""
-#		suspend="鈴"
-#		logout=" "
+	# shutdown="襤"
+	# reboot="ﰇ"
+	# lock=""
+	# suspend="鈴"
+	# logout=" "
 
 
 	else

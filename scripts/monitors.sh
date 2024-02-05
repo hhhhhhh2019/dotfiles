@@ -19,7 +19,7 @@ declare -i throttle_by=4
 function arrange_workspaces() {
     # Maintain 10 workspaces across multiple monitors
     # This script assumes that the monitors are in horizontal layout and already
-    # correctly setup
+# correctly setup
     monitors_json=$(hyprctl monitors -j)
     workspaces_json=$(hyprctl workspaces -j)
 

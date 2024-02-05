@@ -1,3 +1,4 @@
 * {
-    font:				 	"Iosevka 10";
+    /* font:				 	"Iosevka 10"; */
+		font: "FiraCode Nerd Font Mono 10";
 }
