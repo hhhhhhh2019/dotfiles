@@ -28,4 +28,5 @@ alias hx="helix"
 #zprof
 
 export PATH="$PATH:/home/alex/.local/bin"
+export PATH="$PATH:/home/alex/.cargo/bin"
 export PATH="$PATH:/home/alex/.config/emacs/bin"
