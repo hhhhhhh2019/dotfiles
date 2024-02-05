@@ -8,7 +8,7 @@ export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
-plugins=(git dirhistory zsh-autosuggestions zsh-syntax-highlighting command-not-found)
+plugins=(git dirhistory zsh-autosuggestions fast-syntax-highlighting command-not-found)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -24,6 +24,8 @@ alias clear="printf '\033[2J\033[3J\033[1;1H'"
 alias cp="rsync -P"
 
 alias hx="helix"
+
+alias gitui="gitui -t mocha.ron"
 
 #zprof
 

@@ -134,6 +134,12 @@ vim.keymap.set('n', "<C-Down>", "<cmd>wincmd j<cr>")
 vim.keymap.set('n', "<C-Left>", "<cmd>wincmd h<cr>")
 vim.keymap.set('n', "<C-Right>", "<cmd>wincmd l<cr>")
 
+vim.keymap.set({'n', 'i'}, "<C-k>", "<cmd>TmuxNavigateUp<cr>")
+vim.keymap.set({'n', 'i'}, "<C-j>", "<cmd>TmuxNavigateDown<cr>")
+vim.keymap.set({'n', 'i'}, "<C-h>", "<cmd>TmuxNavigateLeft<cr>")
+vim.keymap.set({'n', 'i'}, "<C-l>", "<cmd>TmuxNavigateRight<cr>")
+
+
 vim.keymap.set('n', '<C-S-Down>', ':MoveLine(1)<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<C-S-Up>',  ':MoveLine(-1)<CR>', { noremap = true, silent = true })
 -- vim.keymap.set('n', '<C-S-Left>', ':MoveHChar(-1)<CR>', { noremap = true, silent = true })
