@@ -43,6 +43,26 @@ wk.register({
 		["r"] = {function()
 			require("renamer").rename()
 		end, "renamer"},
+
+
+		["d"] = {
+			name = "diffview",
+
+			["o"] = {
+				"<cmd>DiffviewOpen<cr>",
+				"open diffview",
+			},
+
+			["q"] = {
+				"<cmd>DiffviewClose<cr>",
+				"close diffview",
+			},
+
+			["t"] = {
+				"<cmd>DiffviewToggleFiles<cr>",
+				"toggle diffview files",
+			},
+		}
 	},
 
 

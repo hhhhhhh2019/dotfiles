@@ -153,4 +153,10 @@ config = function()
 
 	cinnamon.setup({})
 end},
+
+
+	{"sindrets/diffview.nvim",
+config = function()
+
+end},
 }
