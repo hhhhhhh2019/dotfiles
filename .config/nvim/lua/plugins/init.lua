@@ -142,12 +142,10 @@ config = function()
 end},
 
 
-	{"natecraddock/sessions.nvim",
+	{"rmagatti/auto-session",
 config = function()
-	require("sessions").setup({
-		events = { "WinEnter" },
-		session_filepath = vim.fn.stdpath("data") .. "/sessions",
-		absolute = true,
-	})
+	require("auto-session").setup {
+		log_level = "error",
+	}
 end},
 }
