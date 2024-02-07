@@ -149,10 +149,10 @@ wk.register({
 
 
 
-vim.keymap.set('n', "<C-Up>", "<cmd>wincmd k<cr>")
-vim.keymap.set('n', "<C-Down>", "<cmd>wincmd j<cr>")
-vim.keymap.set('n', "<C-Left>", "<cmd>wincmd h<cr>")
-vim.keymap.set('n', "<C-Right>", "<cmd>wincmd l<cr>")
+vim.keymap.set({'n', 'i'}, "<C-Up>", "<cmd>wincmd k<cr>")
+vim.keymap.set({'n', 'i'}, "<C-Down>", "<cmd>wincmd j<cr>")
+vim.keymap.set({'n', 'i'}, "<C-Left>", "<cmd>wincmd h<cr>")
+vim.keymap.set({'n', 'i'}, "<C-Right>", "<cmd>wincmd l<cr>")
 
 vim.keymap.set({'n', 'i'}, "<C-k>", "<cmd>TmuxNavigateUp<cr>")
 vim.keymap.set({'n', 'i'}, "<C-j>", "<cmd>TmuxNavigateDown<cr>")
