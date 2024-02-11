@@ -37,6 +37,8 @@ vim.o.foldcolumn = "1"
 vim.o.foldenable = true
 vim.o.foldlevelstart = 99
 vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
+vim.o.foldmethod = "expr"
+vim.o.foldexpr = "nvim_treesitter#foldexpr()"
 
 
 
@@ -59,4 +61,7 @@ vim.diagnostic.config{
 }
 
 
-vim.api.nvim_command("au VimEnter * SessionRestore")
+-- vim.api.nvim_command("au VimEnter * SessionRestore")
+
+
+vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"

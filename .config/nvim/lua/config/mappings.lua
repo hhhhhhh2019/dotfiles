@@ -119,6 +119,17 @@ wk.register({
 	["<space>g"] = {
 		name = "debugger",
 
+		["t"] = {function()
+			require("dapui").toggle()
+		end, "toggle dapui"},
+
+		["b"] = {function()
+			require("dap").toggle_breakpoint()
+		end, "toggle breakpoint"},
+
+		["r"] = {function()
+			require("dap").continue()
+		end, "continue debugging"},
 	},
 
 

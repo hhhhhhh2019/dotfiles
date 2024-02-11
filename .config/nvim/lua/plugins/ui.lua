@@ -159,4 +159,10 @@ end},
 config = function()
 
 end},
+
+
+	{"ii14/neorepl.nvim",
+config = function()
+
+end},
 }

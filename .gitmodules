@@ -1,3 +1,6 @@
 [submodule ".tmux/plugins/tpm"]
 	path = .tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
+[submodule ".config/hypr/hyprland-virtual-desktops"]
+	path = .config/hypr/hyprland-virtual-desktops
+	url = https://github.com/levnikmyskin/hyprland-virtual-desktops

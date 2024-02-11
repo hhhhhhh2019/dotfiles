@@ -48,19 +48,19 @@ config = function()
 		native_lsp = {
 			enabled = true,
 			virtual_text = {
-					errors = { "italic" },
-					hints = { "italic" },
-					warnings = { "italic" },
-					information = { "italic" },
+				errors = { "italic" },
+				hints = { "italic" },
+				warnings = { "italic" },
+				information = { "italic" },
 			},
 			underlines = {
-					errors = { "underline" },
-					hints = { "underline" },
-					warnings = { "underline" },
-					information = { "underline" },
+				errors = { "underline" },
+				hints = { "underline" },
+				warnings = { "underline" },
+				information = { "underline" },
 			},
 			inlay_hints = {
-					background = false,
+				background = false,
 			},
 		},
 	})
@@ -75,7 +75,17 @@ config = function()
 		highlight = {
 			enable = true,
 		},
+
+		autotag = {
+			enable = true,
+		}
 	})
+end},
+
+
+	{"windwp/nvim-ts-autotag",
+confuig = function()
+  require("nvim-ts-autotag").setup({})
 end},
 
 
