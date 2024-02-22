@@ -1,24 +1,82 @@
-@import "colors.rasi"
-@import "font.rasi"
-
-* {
-    background-color:       @BG;
-    text-color:             @FG;
+configuration {
+	show-icons: false;
+	click-to-exit: true;
 }
+
+
+@import "colors.rasi"
+@import "fonts.rasi"
+
 
 window {
-    width:      	        200px;
-    padding:                20px;
-    border:		            0px 0px 2px 0px;
-    border-radius:          8px;
-    border-color:           @BDR;
-    location:               0;
-    x-offset:               0;
-    y-offset:               -4%;
+	transparency:     "real";
+	background-color: @BG;
+	text-color:       @FG;
+	border:           2px;
+	border-color:     @BDR;
+	border-radius:    20px;
+	width:            400px;
+	anchor:           center;
 }
 
-entry {
-    expand: 		        true;
-    width: 		            150px;
-    text-color:		        @BDR;
+mainbox {
+	background-color: @BG;
+	border-radius:    20px;
+	orientation:      vertical;
+	children:         [ message, listview ];
+}
+
+
+message {
+	enabled: true;
+	border-radius:    100% 100% 0 0;
+	background-color: @BGB;
+}
+
+
+textbox {
+	background-color: @BGB;
+	text-color:       @FG;
+	vertical-align:   0.5;
+	horizontal-align: 0.5;
+}
+
+
+listview {
+	enabled:                     true;
+	columns:                     2;
+	lines:                       1;
+	cycle:                       true;
+	dynamic:                     true;
+	scrollbar:                   false;
+	layout:                      vertical;
+	reverse:                     false;
+	fixed-height:                true;
+	fixed-columns:               true;
+	background-color:            transparent;
+	cursor:                      "default";
+	spacing:                     10px;
+	padding:                     30px;
+}
+
+
+element {
+	enabled:          true;
+	padding:          20px 50px;
+	border-radius:    20px;
+	background-color: @BGB;
+	text-color:       @FG;
+	cursor:           pointer;
+}
+
+element-text {
+	background-color: transparent;
+	text-color:       inherit;
+	vertical-align:   0.5;
+	horizontal-align: 0.5;
+}
+
+element selected.normal {
+	background-color: @FG;
+	text-color:       @BGB;
 }

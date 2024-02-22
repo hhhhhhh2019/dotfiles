@@ -158,4 +158,12 @@ config = function()
 		log_level = "error",
 	}
 end},
+
+
+	{"andweeb/presence.nvim",
+config = function()
+	require("presence").setup({
+		
+	})
+end},
 }

@@ -1,13 +1,11 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
+
 rofi \
 	-show drun \
-	-modi run,drun,ssh \
-	-scroll-method 0 \
+	-modi drun \
 	-drun-match-fields all \
 	-drun-display-format "{name}" \
-	-no-drun-show-actions \
+	-no-lazy-grab \
 	-terminal kitty \
-	-theme "$HOME"/.config/rofi/config/launcher.rasi
-
-	# -kb-cancel Alt-F1 \
-
+	-kb-cancel 'Escape' \
+	-theme "$HOME"/dotfiles/.config/rofi/config/launcher.rasi
