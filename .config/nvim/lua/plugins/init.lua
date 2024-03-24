@@ -163,7 +163,13 @@ end},
 	{"andweeb/presence.nvim",
 config = function()
 	require("presence").setup({
-		
+
 	})
+end},
+
+
+	{"ryleelyman/latex.nvim",
+config = function()
+	require("latex").setup()
 end},
 }

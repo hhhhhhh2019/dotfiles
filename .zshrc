@@ -27,8 +27,11 @@ alias hx="helix"
 
 alias gitui="gitui -t mocha.ron"
 
+alias pmbootstrap="pmbootstrap.py"
+
 #zprof
 
 export PATH="$PATH:/home/alex/.local/bin"
 export PATH="$PATH:/home/alex/.cargo/bin"
 export PATH="$PATH:/home/alex/.config/emacs/bin"
+export PATH="$PATH:/home/alex/programs/pmbootstrap"

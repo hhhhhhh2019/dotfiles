@@ -8,7 +8,11 @@ wk.register({
 		name = "telescope",
 
 		["f"] = {function()
-			tsb.find_files()
+			-- tsb.find_files()
+			-- tse.file_browser.file_browser()
+			local opts = {}
+			opts.cwd = vim.fn.systemlist("git rev-parse --show-toplevel")[1]
+			require'telescope.builtin'.find_files(opts)
 		end, "find files"},
 
 		["b"] = {function()

@@ -17,6 +17,8 @@ set () {
 	echo "${swww_flags[@]}"
 
 	echo "$1" > "$HOME/.last_wallpaper"
+
+	# wal -i "$HOME/.wallpapers/$1" -n
 }
 
 

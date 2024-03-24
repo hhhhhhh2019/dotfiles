@@ -12,7 +12,8 @@ end},
 			"nvim-telescope/telescope-ui-select.nvim",
 			"nvim-telescope/telescope-dap.nvim",
 			"debugloop/telescope-undo.nvim",
-			"Zane-/howdoi.nvim"
+			"Zane-/howdoi.nvim",
+			"nvim-telescope/telescope-file-browser.nvim",
 		},
 config = function()
 	local ts = require("telescope")
@@ -37,13 +38,18 @@ config = function()
 			howdoi = {
 				num_answers = 5,
 			},
+
+			file_browser = {
+				auto_depth = true,
+			},
 		}
 	})
 
 	ts.load_extension("ui-select")
 	ts.load_extension("undo")
 	ts.load_extension("dap")
-	-- ts.load_extension("howdoi")
+	ts.load_extension("file_browser")
+	ts.load_extension("howdoi")
 end},
 
 
@@ -164,5 +170,25 @@ end},
 	{"ii14/neorepl.nvim",
 config = function()
 
+end},
+
+
+-- 	{"folke/todo-comments.nvim",
+-- 	dependencies = {"nvim-lua/plenary.nvim"},
+-- config = function()
+-- 	require("todo-comments").setup()
+-- end},
+
+
+	{"NeogitOrg/neogit",
+config = function()
+	require("neogit").setup()
+end},
+
+
+	{"norcalli/nvim-colorizer.lua",
+config = function()
+	vim.cmd("set termguicolors")
+	require("colorizer").setup()
 end},
 }

@@ -20,7 +20,7 @@ config = function()
 			{name = "nvim_lsp"},
 			{name = "fuzzy_buffer"},
 			{name = "path"},
-			{name = "codeium"},
+			-- {name = "codeium"},
 		},
 
 		window = {
@@ -65,9 +65,9 @@ config = function()
 end},
 
 
-	{"Exafunction/codeium.nvim",
-config = function()
-	local codeium = require("codeium")
-	codeium.setup({})
-end},
+-- 	{"Exafunction/codeium.nvim",
+-- config = function()
+-- 	local codeium = require("codeium")
+-- 	codeium.setup({})
+-- end},
 }
