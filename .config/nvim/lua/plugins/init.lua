@@ -172,4 +172,10 @@ end},
 config = function()
 	require("latex").setup()
 end},
+
+
+	{"tpope/vim-obsession",
+config = function ()
+	
+end},
 }

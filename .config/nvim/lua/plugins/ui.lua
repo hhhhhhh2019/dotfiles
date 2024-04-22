@@ -173,11 +173,11 @@ config = function()
 end},
 
 
--- 	{"folke/todo-comments.nvim",
--- 	dependencies = {"nvim-lua/plenary.nvim"},
--- config = function()
--- 	require("todo-comments").setup()
--- end},
+	{"folke/todo-comments.nvim",
+	dependencies = {"nvim-lua/plenary.nvim"},
+config = function()
+	require("todo-comments").setup()
+end},
 
 
 	{"NeogitOrg/neogit",
@@ -190,5 +190,39 @@ end},
 config = function()
 	vim.cmd("set termguicolors")
 	require("colorizer").setup()
+end},
+
+	{"dccsillag/magma-nvim",
+init = function ()
+	-- vim.cmd("UpdateRemotePlugins")
+end,
+config = function ()
+
+end},
+
+
+	{"anuvyklack/pretty-fold.nvim",
+config = function ()
+	require("pretty-fold").setup({
+		keep_indentation = false,
+		fill_char = '━',
+		sections = {
+			 left = {
+					'━ ', function() return string.rep('*', vim.v.foldlevel) end, ' ━┫', 'content', '┣'
+			 },
+			 right = {
+					'┫ ', 'number_of_folded_lines', ': ', 'percentage', ' ┣━━',
+			 }
+		}
+	})
+end},
+
+
+	{"anuvyklack/fold-preview.nvim",
+		dependencies = "anuvyklack/keymap-amend.nvim",
+config = function ()
+	require("fold-preview").setup({
+
+	})
 end},
 }

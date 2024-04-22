@@ -33,12 +33,14 @@ vim.opt.shortmess:append "I"
 vim.opt.list = true
 
 
-vim.o.foldcolumn = "1"
-vim.o.foldenable = true
-vim.o.foldlevelstart = 99
-vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
-vim.o.foldmethod = "expr"
-vim.o.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldcolumn = "1"
+vim.opt.foldenable = true
+vim.opt.foldlevelstart = 99
+vim.opt.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+
+vim.cmd("syntax on")
 
 
 
@@ -65,3 +67,6 @@ vim.diagnostic.config{
 
 
 vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+
+
+vim.cmd("au BufRead,BufNewFile *.comp,*.glsl,*.vert,*.frag   set filetype=glsl")

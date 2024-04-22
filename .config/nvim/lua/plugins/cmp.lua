@@ -18,7 +18,7 @@ config = function()
 	cmp.setup({
 		sources = {
 			{name = "nvim_lsp"},
-			{name = "fuzzy_buffer"},
+			-- {name = "fuzzy_buffer"},
 			{name = "path"},
 			-- {name = "codeium"},
 		},

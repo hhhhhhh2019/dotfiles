@@ -9,10 +9,10 @@ wk.register({
 
 		["f"] = {function()
 			-- tsb.find_files()
-			-- tse.file_browser.file_browser()
-			local opts = {}
-			opts.cwd = vim.fn.systemlist("git rev-parse --show-toplevel")[1]
-			require'telescope.builtin'.find_files(opts)
+			tse.file_browser.file_browser()
+			-- local opts = {}
+			-- opts.cwd = vim.fn.systemlist("git rev-parse --show-toplevel")[1]
+			-- require'telescope.builtin'.find_files(opts)
 		end, "find files"},
 
 		["b"] = {function()
@@ -163,6 +163,7 @@ wk.register({
 })
 
 
+vim.keymap.set('n', 'zo', require("fold-preview").toggle_preview)
 
 vim.keymap.set({'n', 'i'}, "<C-Up>", "<cmd>wincmd k<cr>")
 vim.keymap.set({'n', 'i'}, "<C-Down>", "<cmd>wincmd j<cr>")
