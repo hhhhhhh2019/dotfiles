@@ -1,26 +1,31 @@
 return {
-	{"hrsh7th/nvim-cmp",
-		dependencies = {
-			{"tzachar/cmp-fuzzy-buffer", dependencies = {
-				{"tzachar/fuzzy.nvim"},
-				{"nvim-telescope/telescope-fzf-native.nvim",
-				  build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build"}
-			}},
-			"hrsh7th/cmp-nvim-lsp",
-			"onsails/lspkind.nvim",
-			"saadparwaiz1/cmp_luasnip",
-			"L3MON4D3/LuaSnip",
-			"hrsh7th/cmp-path",
-		},
-config = function()
-	local cmp = require("cmp")
+	"hrsh7th/nvim-cmp",
+	dependencies = {
+		"onsails/lspkind.nvim",
+		"hrsh7th/cmp-nvim-lsp",
+		"hrsh7th/cmp-calc",
+		"hrsh7th/cmp-path",
+		{"tzachar/cmp-fuzzy-buffer",
+		 dependencies = {
+			"tzachar/fuzzy.nvim",
+			dependencies = {"nvim-telescope/telescope-fzf-native.nvim",
+					build = "make"}
+		 }},
+		 "L3MON4D3/LuaSnip",
+	},
 
-	cmp.setup({
+	opts = {
 		sources = {
 			{name = "nvim_lsp"},
-			-- {name = "fuzzy_buffer"},
-			{name = "path"},
-			-- {name = "codeium"},
+			--{name = "calc"},
+			--{name = "path"},
+			--{name = "fuzzy_buffer"},
+		},
+
+		snippet = {
+			expand = function(args)
+				require("luasnip").lsp_expand(args.body)
+			end,
 		},
 
 		window = {
@@ -34,18 +39,12 @@ config = function()
 			},
 		},
 
-		snippet = {
-			expand = function(args)
-				require("luasnip").lsp_expand(args.body)
-			end,
-		},
-
 		mapping = {
-			["<M-d>"] = cmp.mapping.complete(),
-			["<M-q>"] = cmp.mapping.confirm({select = true, behavior=cmp.ConfirmBehavior.Replace}),
-			["<M-e>"] = cmp.mapping.abort(),
-			["<M-a>"] = cmp.mapping.select_next_item({behavior = cmp.SelectBehavior.Select}),
-			["<M-s>"] = cmp.mapping.select_prev_item({behavior = cmp.SelectBehavior.Select})
+			["<M-d>"] = function () require("cmp").complete() end,
+			["<M-q>"] = function () require("cmp").confirm({select = true, behavior=require("cmp").ConfirmBehavior.Replace}) end,
+			["<M-e>"] = function () require("cmp").abort() end,
+			["<M-a>"] = function () require("cmp").select_next_item({behavior = require("cmp").SelectBehavior.Select}) end,
+			["<M-s>"] = function () require("cmp").select_prev_item({behavior = require("cmp").SelectBehavior.Select}) end
 		},
 
 		formatting = {
@@ -61,13 +60,5 @@ config = function()
 				return require("lspkind").cmp_format({ with_text = false })(entry, vim_item)
 			end
 		}
-	})
-end},
-
-
--- 	{"Exafunction/codeium.nvim",
--- config = function()
--- 	local codeium = require("codeium")
--- 	codeium.setup({})
--- end},
+	}
 }
