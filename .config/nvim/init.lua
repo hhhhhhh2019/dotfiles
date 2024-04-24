@@ -50,6 +50,10 @@ vim.opt.list = true
 
 vim.opt.mouse = "a"
 
+vim.opt.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+
+vim.opt.scrolloff = 5
+
 
 local wk = require("which-key")
 local tsb = require("telescope.builtin")

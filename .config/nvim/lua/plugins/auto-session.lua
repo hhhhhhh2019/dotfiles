@@ -1,4 +1,7 @@
 return {
 	"rmagatti/auto-session",
-	opts = {}
+	opts = {
+		auto_restore_enabled = true,
+		auto_save_enabled = true,
+	}
 }

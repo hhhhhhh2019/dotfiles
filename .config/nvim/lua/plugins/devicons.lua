@@ -1,4 +1,6 @@
 return {
 	"nvim-tree/nvim-web-devicons",
-	opts = {}
+	opts = {
+		color_icons = false;
+	}
 }
