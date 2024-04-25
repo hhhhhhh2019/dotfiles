@@ -6,9 +6,14 @@ return {
 		"Zane-/howdoi.nvim",
 		"nvim-tree/nvim-web-devicons",
 		"nvim-treesitter/nvim-treesitter",
+		"nvim-telescope/telescope-ui-select.nvim",
 	},
 	opts = {
 		extensions = {
+			["ui-select"] = {
+				-- require("telescope.themes").get_dropdown({})
+			},
+
 			howdoi = {
 				num_answers = 5,
 			},
@@ -21,5 +26,6 @@ return {
 	init = function ()
 		require("telescope").load_extension("file_browser")
 		require("telescope").load_extension("howdoi")
+		require("telescope").load_extension("ui-select")
 	end
 }

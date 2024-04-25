@@ -17,34 +17,34 @@ vim.cmd.colorscheme("catppuccin")
 
 vim.opt.clipboard = "unnamedplus"
 
-vim.opt.number = true
+vim.opt.number     = true
 vim.opt.cursorline = true
 
-vim.opt.expandtab = false
-vim.opt.shiftwidth = 2
-vim.opt.tabstop = 2
+vim.opt.expandtab   = false
+vim.opt.shiftwidth  = 2
+vim.opt.tabstop     = 2
 vim.opt.softtabstop = 2
 vim.opt.smartindent = true
-vim.opt.autoindent = true
+vim.opt.autoindent  = true
 
 vim.opt.laststatus = 3
-vim.opt.showmode = false
+vim.opt.showmode   = false
 
 vim.opt.confirm = true
 
 vim.opt.number = true
-vim.opt.ruler = true
+vim.opt.ruler  = true
 
-vim.opt.signcolumn = "yes"
+vim.opt.signcolumn    = "yes"
 vim.opt.termguicolors = true
-vim.opt.undofile = true
+vim.opt.undofile      = true
 
 vim.opt.foldcolumn = "1"
 vim.opt.foldenable = false
-vim.opt.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
+vim.opt.fillchars  = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-vim.opt.syntax = "on"
+vim.opt.foldexpr   = "nvim_treesitter#foldexpr()"
+vim.opt.syntax     = "on"
 
 vim.opt.list = true
 
@@ -55,7 +55,7 @@ vim.opt.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,
 vim.opt.scrolloff = 5
 
 
-local wk = require("which-key")
+local wk  = require("which-key")
 local tsb = require("telescope.builtin")
 local tse = require("telescope").extensions
 
@@ -82,6 +82,25 @@ wk.register({
 
 	["<space>c"] = {
 		name = "code",
+
+		["a"] = {
+			name = "align",
+
+			["c"] = { function ()
+					require("align").align_to_char({preview=true})
+				end, "align to char", mode = "v"
+			},
+
+			["r"] = { function ()
+					require("align").align_to_string({preview=true, regex=false})
+				end, "align to char", mode = "v"
+			},
+
+			["s"] = { function ()
+					require("align").align_to_string({preview=true, regex=true})
+				end, "align to char", mode = "v"
+			},
+		},
 
 		["d"] = {
 			name = "diffview",
@@ -135,11 +154,11 @@ wk.register({
 		end, "list quick fixes"},
 
 		["d"] = {function()
-			require("telescope.builtin").diagnostics()
+			tsb.diagnostics()
 		end, "list diagnostic"},
 
 		["r"] = {function()
-			require("telescope.builtin").lsp_references()
+			tsb.lsp_references()
 		end, "references for word under the cursor"},
 
 		["f"] = {function()
