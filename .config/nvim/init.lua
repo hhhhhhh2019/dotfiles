@@ -60,6 +60,20 @@ local tsb = require("telescope.builtin")
 local tse = require("telescope").extensions
 
 wk.register({
+	["<space>s"] = {
+		name = "sessions",
+
+		["l"] = {
+			"<cmd>SessionsLoad .session<cr>",
+			"load session"
+		},
+
+		["s"] = {
+			"<cmd>SessionsSave .session<cr>",
+			"save session"
+		},
+	},
+
 	["<space>f"] = {
 		name = "file/buffer jumping",
 
@@ -82,6 +96,10 @@ wk.register({
 
 	["<space>c"] = {
 		name = "code",
+
+		["r"] = {function()
+			require("renamer").rename()
+		end, "renamer"},
 
 		["a"] = {
 			name = "align",
@@ -169,6 +187,30 @@ wk.register({
 			vim.lsp.buf.hover()
 		end, "open hover documentation"},
 	},
+
+	["<F2>"] = {function()
+		require("dap").toggle_breakpoint()
+	end, "toggle breakpoint"},
+
+	["<F5>"] = {function()
+		require("dap").continue()
+	end, "continue debugging"},
+
+	["<F12>"] = {function()
+		require("dapui").eval(vim.fn.input("Eval: "))
+	end, "eval expression"},
+
+	["<F11>"] = {function()
+		require("dap").step_into()
+	end, "step into"},
+
+	["<F10>"] = {function()
+		require("dap").step_over()
+	end, "step over"},
+
+	["<F9>"] = {function()
+		require("dap").step_out()
+	end, "step out"},
 })
 
 

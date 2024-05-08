@@ -35,3 +35,6 @@ export PATH="$PATH:/home/alex/.local/bin"
 export PATH="$PATH:/home/alex/.cargo/bin"
 export PATH="$PATH:/home/alex/.config/emacs/bin"
 export PATH="$PATH:/home/alex/programs/pmbootstrap"
+
+autoload -U compinit && compinit
+zstyle ':completion:*:*:make:*' tag-order 'targets'

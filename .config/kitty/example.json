@@ -1,0 +1,111 @@
+[
+  {
+    "background_opacity": 1.0,
+    "id": 1,
+    "is_active": true,
+    "is_focused": true,
+    "last_focused": true,
+    "platform_window_id": null,
+    "tabs": [
+      {
+        "active_window_history": [
+          2
+        ],
+        "enabled_layouts": [
+          "splits",
+          "stack"
+        ],
+        "groups": [
+          {
+            "id": 1,
+            "windows": [
+              1,
+              2
+            ]
+          }
+        ],
+        "id": 1,
+        "is_active": true,
+        "is_focused": true,
+        "layout": "splits",
+        "layout_opts": {
+          "default_axis_is_horizontal": true
+        },
+        "layout_state": {
+          "pairs": {
+            "bias": 0.5,
+            "horizontal": true,
+            "one": 1
+          }
+        },
+        "title": "kitty",
+        "windows": [
+          {
+            "at_prompt": true,
+            "cmdline": [
+              "zsh"
+            ],
+            "columns": 160,
+            "created_at": 1714486667644077803,
+            "cwd": "/home/alex/dotfiles/.config/kitty",
+            "env": {
+              "KITTY_SHELL_INTEGRATION": "enabled",
+              "KITTY_WINDOW_ID": "1",
+              "ZDOTDIR": "/usr/lib/kitty/shell-integration/zsh"
+            },
+            "foreground_processes": [
+              {
+                "cmdline": [
+                  "zsh"
+                ],
+                "cwd": "/home/alex/dotfiles/.config/kitty",
+                "pid": 11008
+              }
+            ],
+            "id": 1,
+            "is_active": false,
+            "is_focused": false,
+            "is_self": true,
+            "lines": 41,
+            "pid": 11008,
+            "title": "alex@arch:~/dotfiles/.config/kitty",
+            "user_vars": {}
+          },
+          {
+            "at_prompt": false,
+            "cmdline": [
+              "/usr/bin/kitty",
+              "+runpy",
+              "from kittens.runner import main; main()",
+              "/home/alex/.config/kitty",
+              "session.py",
+              "save"
+            ],
+            "columns": 160,
+            "created_at": 1714486668058899483,
+            "cwd": "/proc/11079/cwd",
+            "env": {
+              "KITTY_CHILD_PID": "11008",
+              "KITTY_COMMON_OPTS": "{\"select_by_word_characters\": \"@-./_~?&=%+#\", \"open_url_with\": [\"default\"], \"url_prefixes\": [\"file\", \"ftp\", \"ftps\", \"gemini\", \"git\", \"gopher\", \"http\", \"https\", \"irc\", \"ircs\", \"kitty\", \"mailto\", \"news\", \"sftp\", \"ssh\"]}",
+              "KITTY_WINDOW_ID": "2",
+              "OVERLAID_WINDOW_COLS": "160",
+              "OVERLAID_WINDOW_LINES": "41",
+              "PYTHONWARNINGS": "ignore"
+            },
+            "foreground_processes": [],
+            "id": 2,
+            "is_active": true,
+            "is_focused": true,
+            "is_self": false,
+            "lines": 41,
+            "pid": 11079,
+            "title": "kitty",
+            "user_vars": {}
+          }
+        ]
+      }
+    ],
+    "wm_class": "kitty",
+    "wm_name": "kitty"
+  }
+]

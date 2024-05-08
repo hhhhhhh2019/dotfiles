@@ -8,5 +8,10 @@ return {
 		},
 
 		scope = { enabled = false },
+
+		exclude = {
+			buftypes = {"nofile"},
+			filetypes = {"dashboard",},
+		}
 	}
 }

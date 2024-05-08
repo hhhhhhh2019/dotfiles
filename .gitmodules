@@ -4,3 +4,9 @@
 [submodule ".config/hypr/hyprland-virtual-desktops"]
 	path = .config/hypr/hyprland-virtual-desktops
 	url = https://github.com/levnikmyskin/hyprland-virtual-desktops
+[submodule ".config/kitty/kitty-save-session"]
+	path = .config/kitty/kitty-save-session
+	url = https://github.com/dflock/kitty-save-session
+[submodule ".config/kitty/window-save"]
+	path = .config/kitty/window-save
+	url = https://github.com/dflock/window-workspace-save-restore
