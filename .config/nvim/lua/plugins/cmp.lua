@@ -46,7 +46,7 @@ return {
 
 		mapping = {
 			["<M-d>"] = function () require("cmp").complete() end,
-			["<M-q>"] = function () require("cmp").confirm({select = true, behavior=require("cmp").ConfirmBehavior.Replace}) end,
+			["<M-q>"] = function () require("cmp").confirm({select = true, behavior=require("cmp").ConfirmBehavior.Append}) end,
 			["<M-e>"] = function () require("cmp").abort() end,
 			["<M-a>"] = function () require("cmp").select_next_item({behavior = require("cmp").SelectBehavior.Select}) end,
 			["<M-s>"] = function () require("cmp").select_prev_item({behavior = require("cmp").SelectBehavior.Select}) end,

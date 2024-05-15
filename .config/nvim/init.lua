@@ -217,4 +217,9 @@ wk.register({
 vim.keymap.set('n', '<C-S-Down>', ':move +1<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<C-S-Up>',  ':move -2<CR>', { noremap = true, silent = true })
 
+vim.keymap.set('v', '<C-S-Down>', ':MoveBlock(1)<CR>', { noremap = true, silent = true })
+vim.keymap.set('v', '<C-S-Up>', ':MoveBlock(-1)<CR>', { noremap = true, silent = true })
+vim.keymap.set('v', '<C-S-Left>', ':MoveHBlock(-1)<CR>', { noremap = true, silent = true })
+vim.keymap.set('v', '<C-S-Right>', ':MoveHBlock(1)<CR>', { noremap = true, silent = true })
+
 vim.keymap.set('n', 'zo', require("fold-preview").toggle_preview)
