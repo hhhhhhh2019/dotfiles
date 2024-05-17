@@ -35,7 +35,7 @@ vim.opt.confirm = true
 vim.opt.number = true
 vim.opt.ruler  = true
 
-vim.opt.signcolumn    = "yes"
+-- vim.opt.signcolumn    = "yes:2"
 vim.opt.termguicolors = true
 vim.opt.undofile      = true
 
