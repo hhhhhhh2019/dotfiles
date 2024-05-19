@@ -8,6 +8,16 @@ return {
 		},
 
 		init = function ()
+			vim.filetype.add {
+				extension = { rasi = 'rasi' },
+				pattern = {
+					['.*/waybar/config'] = 'jsonc',
+					['.*/mako/config'] = 'dosini',
+					['.*/kitty/*.conf'] = 'bash',
+					['.*/hypr/.*%.conf'] = 'hyprlang',
+				},
+			}
+
 			require("nvim-treesitter.configs").setup({
 				auto_install = true,
 				highlight = {enable = true},
