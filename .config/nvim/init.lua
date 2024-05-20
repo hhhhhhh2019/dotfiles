@@ -40,7 +40,8 @@ vim.opt.termguicolors = true
 vim.opt.undofile      = true
 
 vim.opt.foldcolumn = "1"
-vim.opt.foldenable = false
+vim.opt.foldenable = true
+vim.opt.foldlevel = 100
 vim.opt.fillchars  = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr   = "nvim_treesitter#foldexpr()"
@@ -54,8 +55,8 @@ vim.opt.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,
 
 vim.opt.scrolloff = 5
 
-vim.opt.exrc = true
-vim.opt.secure = true
+-- vim.opt.exrc = true
+-- vim.opt.secure = true
 
 
 local wk  = require("which-key")
