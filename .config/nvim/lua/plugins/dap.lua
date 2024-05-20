@@ -93,15 +93,14 @@ return {
 		sign("DapBreakpointCondition", { text = "●", texthl = "DapBreakpointCondition", linehl = "", numhl = ""})
 		sign("DapLogPoint", { text = "◆", texthl = "DapLogPoint", linehl = "", numhl = ""})
 
-		-- vim.api.nvim_set_hl(0, "DapUIStepOverNC", {bg="bg"})
-		-- vim.api.nvim_set_hl(0, "DapUIStepOver", {bg="bg"})
-		-- vim.api.nvim_set_hl(0, "DapUIStepIntoNC", {bg="bg"})
-		-- vim.api.nvim_set_hl(0, "DapUIStepBackNC", {bg="bg"})
-		-- vim.api.nvim_set_hl(0, "DapUIStepOutNC", {bg="bg"})
-		-- vim.api.nvim_set_hl(0, "DapUIStopNC", {bg="bg", fg="red"})
-		-- vim.api.nvim_set_hl(0, "DapUIRestartNC", {bg="bg", fg="red"})
-		-- vim.api.nvim_set_hl(0, "DapUIPlayPause", {bg="bg", fg="green"})
-		-- -- "#A9FF68"
+		vim.api.nvim_set_hl(0, "DapUIStepOverNC", {link = "DapUIStepOver"})
+		vim.api.nvim_set_hl(0, "DapUIStepIntoNC", {link = "DapUIStepInto"})
+		vim.api.nvim_set_hl(0, "DapUIStepOutNC", {link = "DapUIStepOut"})
+		vim.api.nvim_set_hl(0, "DapUIStepBackNC", {link = "DapUIStepBack"})
+		vim.api.nvim_set_hl(0, "DapUINormalNC", {link = "DapUINormal"})
+		vim.api.nvim_set_hl(0, "DapUIStopNC", {link = "DapUIStop"})
+		vim.api.nvim_set_hl(0, "DapUIRestartNC", {link = "DapUIRestart"})
+		vim.api.nvim_set_hl(0, "DapUIPlayPauseNC", {link = "DapUIPlayPause"})
 
 
 		require("nvim-dap-virtual-text").setup({
