@@ -54,6 +54,9 @@ vim.opt.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,
 
 vim.opt.scrolloff = 5
 
+vim.opt.exrc = true
+vim.opt.secure = true
+
 
 local wk  = require("which-key")
 local tsb = require("telescope.builtin")
