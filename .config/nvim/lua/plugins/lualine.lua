@@ -9,6 +9,25 @@ return {
 			section_separators = { left = "", right = ""},
 
 			--           󰝤        
+
+			disabled_filetypes = {
+				statusline = {
+					"dap-repl",
+					"dapui_breakpoints",
+					"dapui_console",
+					"dapui_scopes",
+					"dapui_watches",
+					"dapui_stacks",
+				},
+				winbar = {
+					"dap-repl",
+					"dapui_breakpoints",
+					"dapui_console",
+					"dapui_scopes",
+					"dapui_watches",
+					"dapui_stacks",
+				},
+			},
 		},
 
 		sections = {
