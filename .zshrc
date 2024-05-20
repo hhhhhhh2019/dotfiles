@@ -62,6 +62,8 @@ alias ls="eza --icons=always"
 # zsh integrations
 eval "$(fzf --zsh)"
 
+export EDITOR=nvim
+
 
 export FZF_DEFAULT_OPTS=" \
 --color=bg+:#ccd0da,bg:#eff1f5,spinner:#dc8a78,hl:#d20f39 \
