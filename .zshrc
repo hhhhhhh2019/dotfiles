@@ -95,10 +95,18 @@ SAVEHIST=$HISTSIZE
 HISTDUP=earse
 setopt appendhistory
 setopt sharehistory
+setopt hist_ignore_space
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
 
 
 # aliases
 alias ls="eza --icons=always"
+alias la="eza --icons always --all --long --group"
+alias clear="printf '\033[2J\033[3J\033[1;1H'"
+alias cp="rsync -P"
 
 
 # zsh integrations

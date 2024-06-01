@@ -15,6 +15,7 @@ $character"""
 
 [directory]
 style = "bold lavender"
+format = "[  $path ]($style)"
 
 [character]
 success_symbol = "[❯](purple)"
@@ -22,11 +23,13 @@ error_symbol = "[❯](red)"
 vimcmd_symbol = "[❮](green)"
 
 [git_branch]
-format = "[󰘬 $branch]($style)"
+# format = "[󰘬 $branch]($style)"
+format = '[󰘬 $branch(:$remote_branch) ]($style)'
 style = "maroon"
 
 [git_status]
-format = "[($conflicted$untracked$modified$staged$deleted) ($ahead_behind$stashed)]($style)"
+format = "[$all_status]($style)"
+# format = "[($conflicted$untracked$modified$staged$deleted) ($ahead_behind$stashed)]($style)"
 style = "teal"
 conflicted = "="
 untracked = "?"
@@ -40,7 +43,7 @@ format = '\([$state( $progress_current/$progress_total)]($style)\) '
 style = "peach"
 
 [cmd_duration]
-format = "[$duration]($style) "
+format = "[  $duration]($style) "
 style = "yellow"
 
 
