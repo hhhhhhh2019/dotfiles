@@ -3,7 +3,7 @@ return {
 	name = "catppuccin",
 	priority = 1000,
 	opts = {
-		flavour = "mocha",
+		-- flavour = "auto",
 		background = {
 			light = "latte",
 			dark = "mocha",
