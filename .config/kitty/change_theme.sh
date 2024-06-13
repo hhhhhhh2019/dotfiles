@@ -6,10 +6,10 @@ CONFIG="$HOME/.config/kitty/"
 
 rm -f "$CONFIG/theme.conf"
 
-if [ "$mode" == "2" ]; then
- ln -s "$CONFIG/latte.conf" "$CONFIG/theme.conf"
-else
+if [ "$mode" == "1" ]; then
  ln -s "$CONFIG/mocha.conf" "$CONFIG/theme.conf"
+else
+ ln -s "$CONFIG/latte.conf" "$CONFIG/theme.conf"
 fi
 
 kitty @ action load_config_file
