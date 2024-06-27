@@ -1,9 +1,11 @@
 return {
 	"lukas-reineke/indent-blankline.nvim",
+	dependencies = "HiPhish/rainbow-delimiters.nvim",
 	name = "ibl",
+	event = "VeryLazy",
 	opts = {
 		indent = {
-			char = '⎸', -- ▎⏐
+			char = '⎸',
 			tab_char = '⎸',
 		},
 
@@ -11,7 +13,7 @@ return {
 
 		exclude = {
 			buftypes = {"nofile"},
-			filetypes = {"dashboard",},
+			filetypes = {"dashboard"},
 		}
-	}
+	},
 }

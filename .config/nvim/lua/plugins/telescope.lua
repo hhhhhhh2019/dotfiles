@@ -11,12 +11,8 @@ return {
 	opts = {
 		extensions = {
 			["ui-select"] = {
-				-- require("telescope.themes").get_dropdown({})
+				require("telescope.themes").get_dropdown({})
 			},
-
-			-- howdoi = {
-			-- 	num_answers = 5,
-			-- },
 
 			file_browser = {
 				auto_depth = true,
@@ -25,7 +21,6 @@ return {
 	},
 	init = function ()
 		require("telescope").load_extension("file_browser")
-		-- require("telescope").load_extension("howdoi")
 		require("telescope").load_extension("ui-select")
 	end
 }
