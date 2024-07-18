@@ -7,6 +7,7 @@ return {
 		"nvim-tree/nvim-web-devicons",
 		"nvim-treesitter/nvim-treesitter",
 		"nvim-telescope/telescope-ui-select.nvim",
+		"debugloop/telescope-undo.nvim",
 	},
 	opts = {
 		extensions = {
@@ -17,10 +18,13 @@ return {
 			file_browser = {
 				auto_depth = true,
 			},
+
+			undo = {},
 		}
 	},
 	init = function ()
 		require("telescope").load_extension("file_browser")
 		require("telescope").load_extension("ui-select")
+		require("telescope").load_extension("undo")
 	end
 }

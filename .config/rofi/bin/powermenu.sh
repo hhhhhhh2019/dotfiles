@@ -1,5 +1,5 @@
 #!/bin/bash
 
-RESULT=$(printf "poweroff\nreboot\nsuspend" | rofi -dmenu "$@")
+RESULT=$(printf "poweroff\nreboot\nsuspend\nhybrid-sleep" | rofi -dmenu "$@")
 
 systemctl "$RESULT"

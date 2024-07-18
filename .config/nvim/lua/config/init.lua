@@ -17,3 +17,5 @@ vim.opt.smartcase = true
 vim.opt.mouse = "a"
 
 vim.opt.undofile = true
+
+vim.cmd("autocmd! BufNewFile,BufRead *.vs,*.fs,*.frag,*.comp,*.vert set ft=glsl")
