@@ -175,3 +175,6 @@ alias la="eza --icons always --all --long --group"
 alias clear="printf '\033[2J\033[3J\033[1;1H'"
 alias cp="rsync -P"
 alias pmbootstrap="$HOME/pmos/pmbootstrap/pmbootstrap.py"
+
+
+export PATH=$PATH:$HOME/.spoof-dpi/bin
