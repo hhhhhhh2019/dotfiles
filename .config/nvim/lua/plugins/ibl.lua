@@ -9,7 +9,7 @@ return {
 			tab_char = '⎸',
 		},
 
-		scope = { enabled = false },
+		scope = { enabled = true },
 
 		exclude = {
 			buftypes = {"nofile"},

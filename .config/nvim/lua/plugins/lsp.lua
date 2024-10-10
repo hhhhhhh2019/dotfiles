@@ -37,7 +37,13 @@ return {
 				enabled = true,
 			},
 		}}})
-		lspconfig.clangd.setup       ({capabilities = capabilities})
+		lspconfig.clangd.setup       ({
+			capabilities = capabilities,
+			on_attach = function()
+				-- require("clangd_extensions.inlay_hints").setup_autocmd()
+				-- require("clangd_extensions.inlay_hints").set_inlay_hints()
+			end
+		})
 		lspconfig.bashls.setup       ({capabilities = capabilities})
 		lspconfig.lua_ls.setup       ({capabilities = capabilities})
 		lspconfig.quick_lint_js.setup({capabilities = capabilities})

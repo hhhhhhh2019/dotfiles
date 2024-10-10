@@ -15,7 +15,7 @@ wk.add({
 	{"<space>ss", "<cmd>SessionsSave .session<cr>", desc="save session"},
 
 	{"<space>c", group="code"},
-	{"<space>cr", require("renamer").rename, desc="renamer"},
+	{"<space>cr", ":IncRename ", desc="renamer"},
 	{"<space>cd", group="diffview"},
 	{"<space>cdo", "<cmd>DiffviewOpen<cr>", desc="open diffview"},
 	{"<space>cdc", "<cmd>DiffviewClose<cr>", desc="open close"},
@@ -49,3 +49,8 @@ vim.keymap.set('v', '<C-S-Down>', ':MoveBlock(1)<CR>', { noremap = true, silent 
 vim.keymap.set('v', '<C-S-Up>', ':MoveBlock(-1)<CR>', { noremap = true, silent = true })
 vim.keymap.set('v', '<C-S-Left>', ':MoveHBlock(-1)<CR>', { noremap = true, silent = true })
 vim.keymap.set('v', '<C-S-Right>', ':MoveHBlock(1)<CR>', { noremap = true, silent = true })
+
+vim.keymap.set({'n', 'v', 'i'}, '<Left>', '<Nop>')
+vim.keymap.set({'n', 'v', 'i'}, '<Right>', '<Nop>')
+vim.keymap.set({'n', 'v', 'i'}, '<Up>', '<Nop>')
+vim.keymap.set({'n', 'v', 'i'}, '<Down>', '<Nop>')

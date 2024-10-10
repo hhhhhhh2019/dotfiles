@@ -12,7 +12,17 @@ return {
 		},
 
 		sections = {
-			lualine_a = {"mode"},
+			lualine_a = {"mode", {
+				"macro-recording",
+				fmt = function ()
+					local recording_register = vim.fn.reg_recording()
+					if recording_register == "" then
+							return ""
+					else
+							return "Recording @" .. recording_register
+					end
+				end,
+			}},
 			lualine_b = {
 				{"filetype", icon_only = true},
 				"filename"

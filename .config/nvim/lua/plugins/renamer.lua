@@ -1,4 +1,4 @@
 return {
-	"filipdutescu/renamer.nvim",
+	"smjonas/inc-rename.nvim",
 	opts = {}
 }

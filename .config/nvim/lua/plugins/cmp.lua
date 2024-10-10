@@ -47,13 +47,13 @@ return {
 			},
 
 			mapping = {
-				["<M-d>"] = cmp.mapping.complete(),
-				["<M-q>"] = cmp.mapping.confirm({select = true, behavior=require("cmp").ConfirmBehavior.Append}),
-				["<M-e>"] = cmp.mapping.abort(),
-				["<M-a>"] = cmp.mapping.select_next_item({behavior = require("cmp").SelectBehavior.Select}),
-				["<M-s>"] = cmp.mapping.select_prev_item({behavior = require("cmp").SelectBehavior.Select}),
-				["<M-z>"] = cmp.mapping.scroll_docs(-1),
-				["<M-x>"] = cmp.mapping.scroll_docs(1),
+				["<C-d>"] = cmp.mapping.complete(),
+				["<C-q>"] = cmp.mapping.confirm({select = true, behavior=require("cmp").ConfirmBehavior.Append}),
+				["<C-w>"] = cmp.mapping.abort(),
+				["<C-a>"] = cmp.mapping.select_next_item({behavior = require("cmp").SelectBehavior.Select}),
+				["<C-s>"] = cmp.mapping.select_prev_item({behavior = require("cmp").SelectBehavior.Select}),
+				["<C-z>"] = cmp.mapping.scroll_docs(-1),
+				["<C-x>"] = cmp.mapping.scroll_docs(1),
 			},
 
 			formatting = {

@@ -81,6 +81,8 @@
 (use-package ligature
   :config
   (ligature-set-ligatures 't '(
+        ("<" (rx (+ (or "=" "-" ">"))))
+        (">" (rx (+ (or "=" "-" "<"))))
         ("=" (rx (+ (or "=" ">" "<" "|" "!" "/"))))
         ("-" (rx (+ (or "-" ">" "<" "|" "~"))))
         ("_" (rx (+ "_")))
@@ -89,7 +91,7 @@
         (":" (rx (or ">" "<" "=" "//" ":=" (+ ":"))))
         ("?" (rx (or ":" "=" "\." (+ "?"))))
         ("0" (rx (and "x" (+ (in "A-F" "a-f" "0-9")))))
-        "Fl" "Tl" "fi" "fj" "fl" "ft"
+        ;; "Fl" "Tl" "fi" "fj" "fl" "ft"
         "{|" "[|" "]#" "(*" "}#" "$>" "^="
   ))
   (global-ligature-mode t))
@@ -113,6 +115,11 @@
 (after! dap-mode
   (setq dap-python-debugger 'debugpy))
 
+(use-package! dap-mode
+  :config
+  (require 'dap-node)
+  (dap-node-setup))
+
 
 (global-unset-key (kbd "C-a"))
 (global-set-key (kbd "C-a") 'evil-numbers/inc-at-pt)
@@ -121,3 +128,85 @@
 
 (global-tree-sitter-mode)
 (add-hook 'tree-sitter-after-on 'tree-sitter-hl-mode)
+
+(setq-default indent-tabs-mode t)
+(setq c-basic-offset 4)
+
+;; (after! dap-mode
+;;   (setq dap-cpptools-extension-version "1.5.1")
+
+;;   (require 'dap-gdb-lldb)
+
+;;   (with-eval-after-load 'lsp-rust
+;;     (require 'dap-cpptools))
+
+;;   (dap-register-debug-template "Rust::GDB Run Configuration"
+;;                              (list :type "gdb"
+;;                                    :request "launch"
+;;                                    :name "GDB::Run"
+;;                            :gdbpath "rust-gdb"
+;;                                    :target nil
+;;                                    :cwd nil))
+
+;;   ;; (with-eval-after-load 'dap-cpptools
+;;   ;;   ;; Add a template specific for debugging Rust programs.
+;;   ;;   ;; It is used for new projects, where I can M-x dap-edit-debug-template
+;;   ;;   (dap-register-debug-template "Rust::CppTools Run Configuration"
+;;   ;;                                (list :type "cppdbg"
+;;   ;;                                      :request "launch"
+;;   ;;                                      :name "Rust::Run"
+;;   ;;                                      :MIMode "gdb"
+;;   ;;                                      :miDebuggerPath "rust-gdb"
+;;   ;;                                      :environment []
+;;   ;;                                      :program "${workspaceFolder}/target/debug/hello / replace with binary"
+;;   ;;                                      :cwd "${workspaceFolder}"
+;;   ;;                                      :console "external"
+;;   ;;                                      :dap-compilation "cargo build"
+;;   ;;                                      :dap-compilation-dir "${workspaceFolder}")))
+
+;;   (with-eval-after-load 'dap-mode
+;;     (setq dap-default-terminal-kind "integrated")
+;;     (dap-auto-configure-mode +1)))
+
+(after! dap-mode
+  (require 'dap-lldb)
+  (setq dap-auto-configure-features '(sessions locals controls tooltip))
+  (dap-register-debug-template "Rust::GDB Run Configuration"
+			       (list :type "gdb"
+				     :request "launch"
+				     :name "GDB::Run"
+				     :gdbpath "rust-gdb"
+                                     :target nil
+                                     :cwd nil))
+)
+
+(map! :map dap-mode-map
+      :leader
+      :prefix ("d" . "dap")
+      ;; basics
+      :desc "dap next"          "n" #'dap-next
+      :desc "dap step in"       "i" #'dap-step-in
+      :desc "dap step out"      "o" #'dap-step-out
+      :desc "dap continue"      "c" #'dap-continue
+      :desc "dap hydra"         "h" #'dap-hydra
+      :desc "dap debug restart" "r" #'dap-debug-restart
+      :desc "dap debug"         "s" #'dap-debug
+
+      ;; debug
+      :prefix ("dd" . "Debug")
+      :desc "dap debug recent"  "r" #'dap-debug-recent
+      :desc "dap debug last"    "l" #'dap-debug-last
+
+      ;; eval
+      :prefix ("de" . "Eval")
+      :desc "eval"                "e" #'dap-eval
+      :desc "eval region"         "r" #'dap-eval-region
+      :desc "eval thing at point" "s" #'dap-eval-thing-at-point
+      :desc "add expression"      "a" #'dap-ui-expressions-add
+      :desc "remove expression"   "d" #'dap-ui-expressions-remove
+
+      :prefix ("db" . "Breakpoint")
+      :desc "dap breakpoint toggle"      "b" #'dap-breakpoint-toggle
+      :desc "dap breakpoint condition"   "c" #'dap-breakpoint-condition
+      :desc "dap breakpoint hit count"   "h" #'dap-breakpoint-hit-condition
+      :desc "dap breakpoint log message" "l" #'dap-breakpoint-log-message)
