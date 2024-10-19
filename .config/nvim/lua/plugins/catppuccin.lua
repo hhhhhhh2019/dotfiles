@@ -14,7 +14,21 @@ return {
 			mason = true,
 			notify = true,
 			ufo = true,
-		}
+		},
+		styles = {
+			comments = {},
+			conditionals = {},
+			loops = {},
+			functions = {},
+			keywords = {},
+			strings = {},
+			variables = {},
+			numbers = {},
+			booleans = {},
+			properties = {},
+			types = {},
+			operators = {},
+		},
 	},
 	config = function(lazy, opts)
 		require("catppuccin").setup(opts)
