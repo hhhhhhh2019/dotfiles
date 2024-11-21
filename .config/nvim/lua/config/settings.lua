@@ -18,12 +18,13 @@ vim.schedule(function()
 end)
 
 
+local functions = require("config/functions")
+
+
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "python",
-	-- buffer = 1,
 	callback = function(_)
-		vim.api.nvim_buf_set_keymap(0, "n", "<space>pm", "lua require('config.functions').manim_render_scene", {expr=true})
-		-- vim.keymap.set("n", "<space>pm", functions.manim_render_scene)
+		vim.keymap.set("n", "<space>pm", functions.manim_render_scene, {buffer=true})
 	end,
 })
 
