@@ -1,10 +1,28 @@
+local _border = "rounded"
+
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+  vim.lsp.handlers.hover, {
+    border = _border
+  }
+)
+
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
+  vim.lsp.handlers.signature_help, {
+    border = _border
+  }
+)
+
+vim.diagnostic.config{
+  float={border=_border}
+}
+
+
 return {
 	"neovim/nvim-lspconfig",
-	lazy = false,
 	config = function()
 		local lspconfig = require("lspconfig")
 
-		lspconfig.pylsp.setup({capabilities = capabilities, pylsp = { plugins = {
+		lspconfig.pylsp.setup({pylsp = { plugins = {
 			flake8 = {
 				enabled = true,
 			},
@@ -37,18 +55,12 @@ return {
 				enabled = true,
 			},
 		}}})
-		lspconfig.clangd.setup       ({
-			capabilities = capabilities,
-			on_attach = function()
-				-- require("clangd_extensions.inlay_hints").setup_autocmd()
-				-- require("clangd_extensions.inlay_hints").set_inlay_hints()
-			end
-		})
-		lspconfig.bashls.setup       ({capabilities = capabilities})
-		lspconfig.lua_ls.setup       ({capabilities = capabilities})
-		lspconfig.quick_lint_js.setup({capabilities = capabilities})
-		lspconfig.gdscript.setup     ({capabilities = capabilities})
-		lspconfig.julials.setup      ({capabilities = capabilities})
-		lspconfig.glslls.setup       ({capabilities = capabilities})
+		lspconfig.clangd.setup       ({})
+		lspconfig.bashls.setup       ({})
+		lspconfig.lua_ls.setup       ({})
+		lspconfig.quick_lint_js.setup({})
+		lspconfig.gdscript.setup     ({})
+		lspconfig.julials.setup      ({})
+		lspconfig.glslls.setup       ({})
 	end
 }

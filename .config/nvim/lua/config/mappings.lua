@@ -2,27 +2,23 @@ local wk  = require("which-key")
 local tsb = require("telescope.builtin")
 local tse = require("telescope").extensions
 
+
 wk.add({
 	{"<space>f", group="telescope"},
 	{"<space>ff", tse.file_browser.file_browser, desc="file browser", mode="n"},
 	{"<space>fg", tsb.live_grep, desc="live grep", mode="n"},
-	{"<space>fb", tsb.buffers, desc="list buffers", mode="n"},
 	{"<space>ft", tsb.treesitter, desc="treesitter", mode="n"},
 	{"<space>fu", tse.undo.undo, desc="undo history", mode="n"},
 
-	{"<space>s", group="sessions"},
-	{"<space>sl", "<cmd>SessionsLoad .session<cr>", desc="load session"},
-	{"<space>ss", "<cmd>SessionsSave .session<cr>", desc="save session"},
+	{"<space>b", group="buffers"},
+	{"<space>bd", "<cmd>bp<bar>sp<bar>bn<bar>bd<cr>", desc="close buffer", mode="n"},
+	{"<space>bb", tsb.buffers, desc="list buffers", mode="n"},
 
 	{"<space>c", group="code"},
-	{"<space>cr", ":IncRename ", desc="renamer"},
+	{"<space>cr", "<cmd>IncRename<cr>", desc="renamer"},
 	{"<space>cd", group="diffview"},
 	{"<space>cdo", "<cmd>DiffviewOpen<cr>", desc="open diffview"},
-	{"<space>cdc", "<cmd>DiffviewClose<cr>", desc="open close"},
-	{"<space>cdt", "<cmd>DiffviewToggle<cr>", desc="open toggle"},
-
-	{"<space>b", group="buffer/window"},
-	{"<space>bd", "<cmd>bp<bar>sp<bar>bn<bar>bd<CR>", desc="close buffer"},
+	{"<space>cdc", "<cmd>DiffviewClose<cr>", desc="close diffview"},
 
 	{"<space>d", group="LSP"},
 	{"<space>dq", vim.lsp.buf.code_action, desc="list quick fixes"},
@@ -49,8 +45,3 @@ vim.keymap.set('v', '<C-S-Down>', ':MoveBlock(1)<CR>', { noremap = true, silent 
 vim.keymap.set('v', '<C-S-Up>', ':MoveBlock(-1)<CR>', { noremap = true, silent = true })
 vim.keymap.set('v', '<C-S-Left>', ':MoveHBlock(-1)<CR>', { noremap = true, silent = true })
 vim.keymap.set('v', '<C-S-Right>', ':MoveHBlock(1)<CR>', { noremap = true, silent = true })
-
-vim.keymap.set({'n', 'v', 'i'}, '<Left>', '<Nop>')
-vim.keymap.set({'n', 'v', 'i'}, '<Right>', '<Nop>')
-vim.keymap.set({'n', 'v', 'i'}, '<Up>', '<Nop>')
-vim.keymap.set({'n', 'v', 'i'}, '<Down>', '<Nop>')

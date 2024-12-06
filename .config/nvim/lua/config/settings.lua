@@ -13,18 +13,4 @@ vim.opt.expandtab = false
 
 vim.opt.undofile = true
 
-vim.schedule(function()
-	vim.cmd.colorscheme "catppuccin"
-end)
-
-
-local functions = require("config/functions")
-
-
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = "python",
-	callback = function(_)
-		vim.keymap.set("n", "<space>pm", functions.manim_render_scene, {buffer=true})
-	end,
-})
-
+vim.opt.showmode = false

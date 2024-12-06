@@ -3,9 +3,6 @@ return {
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"nvim-telescope/telescope-file-browser.nvim",
-		-- "Zane-/howdoi.nvim",
-		"nvim-tree/nvim-web-devicons",
-		"nvim-treesitter/nvim-treesitter",
 		"nvim-telescope/telescope-ui-select.nvim",
 		"debugloop/telescope-undo.nvim",
 	},
