@@ -32,6 +32,4 @@ vim.schedule(function()
 
 	require "config/settings"
 	require "config/mappings"
-
-	require "custom/lsp_signature"
 end)
