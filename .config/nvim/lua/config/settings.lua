@@ -14,3 +14,7 @@ vim.opt.expandtab = false
 vim.opt.undofile = true
 
 vim.opt.showmode = false
+
+vim.api.nvim_create_autocmd("TermOpen", {
+	command = "setlocal nonumber norelativenumber"
+})

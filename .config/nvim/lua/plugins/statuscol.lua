@@ -19,6 +19,7 @@ return {
 			bt_ignore = {
 				"dap-repl","dapui_breakpoints","dapui_console","dapui_scopes",
 				"dapui_watches","dapui_stacks",
+				"terminal",
 			},
 		})
 	end
