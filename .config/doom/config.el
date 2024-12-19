@@ -35,6 +35,7 @@
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 (setq catppuccin-flavor 'latte)
+(setq catppuccin-flavor 'mocha)
 (setq doom-theme 'catppuccin)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
@@ -219,7 +220,6 @@
   (search-default-mode #'char-fold-to-regexp))
 
 (use-package reverse-im
-  :ensure t ; install `reverse-im' using package.el
   :demand t ; always load it
   :after char-fold ; but only after `char-fold' is loaded
   :bind
@@ -237,3 +237,31 @@
 
 
 (setq display-line-numbers-type 'relative)
+
+
+(defun my/text-scale-adjust-latex-previews ()
+  (pcase major-mode
+    ('latex-mode
+     (dolist (ov (overlays-in (point-min) (point-max)))
+       (if (eq (overlay-get ov 'category)
+               'preview-overlay)
+           (my/text-scale--resize-fragment ov))))
+    ('org-mode
+     (dolist (ov (overlays-in (point-min) (point-max)))
+       (if (eq (overlay-get ov 'org-overlay-type)
+               'org-latex-overlay)
+           (my/text-scale--resize-fragment ov))))))
+
+(defun my/text-scale--resize-fragment (ov)
+  (overlay-put
+   ov 'display
+   (cons 'image
+         (plist-put
+          (cdr (overlay-get ov 'display))
+          :scale (+ 1.0 (* 0.25 text-scale-mode-amount))))))
+
+(add-hook 'text-scale-mode-hook #'my/text-scale-adjust-latex-previews)
+
+(setq org-preview-latex-default-process 'dvisvgm)
+(require 'org)
+(setq org-format-latex-options (plist-put org-format-latex-options :scale 2.0))

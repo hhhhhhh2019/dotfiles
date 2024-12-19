@@ -53,3 +53,5 @@
 (package! ligature)
 (package! org-auto-tangle)
 (package! evil-numbers)
+(package! reverse-im)
+(package! evil-multiedit)
