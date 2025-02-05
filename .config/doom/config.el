@@ -92,8 +92,10 @@
         (":" (rx (or ">" "<" "=" "//" ":=" (+ ":"))))
         ("?" (rx (or ":" "=" "\." (+ "?"))))
         ("0" (rx (and "x" (+ (in "A-F" "a-f" "0-9")))))
+	("|" (rx (+ "-")))
         ;; "Fl" "Tl" "fi" "fj" "fl" "ft"
         "{|" "[|" "]#" "(*" "}#" "^=" "!="
+	">>=" "<<="
   ))
   (global-ligature-mode t))
 
@@ -113,15 +115,6 @@
 (global-set-key [right] #'my-maybe-right)
 
 
-(after! dap-mode
-  (setq dap-python-debugger 'debugpy))
-
-(use-package! dap-mode
-  :config
-  (require 'dap-node)
-  (dap-node-setup))
-
-
 (global-unset-key (kbd "C-a"))
 (global-set-key (kbd "C-a") 'evil-numbers/inc-at-pt)
 (global-unset-key (kbd "C-s"))
@@ -133,53 +126,6 @@
 (setq-default indent-tabs-mode t)
 (setq c-basic-offset 4)
 
-(after! dap-mode
-  (setq dap-cpptools-extension-version "1.5.1")
-
-  (require 'dap-gdb-lldb)
-
-  (with-eval-after-load 'lsp-rust
-    (require 'dap-cpptools))
-
-  (dap-register-debug-template "Rust::GDB Run Configuration"
-                             (list :type "gdb"
-                                   :request "launch"
-                                   :name "GDB::Run"
-                                   :gdbpath "rust-gdb"
-                                   :target nil
-                                   :cwd nil))
-
-  ;; (with-eval-after-load 'dap-cpptools
-  ;;   ;; Add a template specific for debugging Rust programs.
-  ;;   ;; It is used for new projects, where I can M-x dap-edit-debug-template
-  ;;   (dap-register-debug-template "Rust::CppTools Run Configuration"
-  ;;                                (list :type "cppdbg"
-  ;;                                      :request "launch"
-  ;;                                      :name "Rust::Run"
-  ;;                                      :MIMode "gdb"
-  ;;                                      :miDebuggerPath "rust-gdb"
-  ;;                                      :environment []
-  ;;                                      :program "${workspaceFolder}/target/debug/hello / replace with binary"
-  ;;                                      :cwd "${workspaceFolder}"
-  ;;                                      :console "external"
-  ;;                                      :dap-compilation "cargo build"
-  ;;                                      :dap-compilation-dir "${workspaceFolder}")))
-
-  (with-eval-after-load 'dap-mode
-    (setq dap-default-terminal-kind "integrated")
-    (dap-auto-configure-mode +1)))
-
-(after! dap-mode
-  (require 'dap-lldb)
-  (setq dap-auto-configure-features '(sessions locals controls tooltip))
-  (dap-register-debug-template "Rust::GDB Run Configuration"
-			       (list :type "gdb"
-				     :request "launch"
-				     :name "GDB::Run"
-				     :gdbpath "rust-gdb"
-                                     :target nil
-                                     :cwd nil))
-)
 
 (map! :map dap-mode-map
       :leader
@@ -265,3 +211,22 @@
 (setq org-preview-latex-default-process 'dvisvgm)
 (require 'org)
 (setq org-format-latex-options (plist-put org-format-latex-options :scale 2.0))
+
+
+(setq dap-auto-configure-mode t)
+
+(use-package dap-mode
+  :defer
+  :custom
+  (dap-auto-configure-features '(sessions locals breakpoints expressions tooltip))
+  :config
+  (require 'dap-gdb-lldb)
+
+  (dap-register-debug-template
+   "C GDB"
+   (list :type "gdb"
+         :cwd nil
+         :args nil
+         :request "launch"
+         :program nil))
+  )

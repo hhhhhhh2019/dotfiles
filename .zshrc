@@ -169,9 +169,12 @@ setopt hist_ignore_dups
 setopt hist_find_no_dups
 
 
+export PATH="$PATH:$HOME/.local/bin"
+
+
 # aliases
 alias ls="eza --icons=always"
 alias la="eza --icons always --all --long --group"
 alias clear="printf '\033[2J\033[3J\033[1;1H'"
 alias cp="rsync -P"
-alias pmbootstrap="$HOME/pmos/pmbootstrap/pmbootstrap.py"
+alias pmbootstrap="$HOME/pmbootstrap/pmbootstrap.py"

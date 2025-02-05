@@ -3,6 +3,7 @@ return {
 	dependencies = {
 		"MunifTanjim/nui.nvim",
 	},
+	enabled = false,
 	opts = {
 		lsp = {
 			override = {
