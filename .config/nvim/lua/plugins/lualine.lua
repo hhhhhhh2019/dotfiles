@@ -29,7 +29,8 @@ return {
 					"filename",
 					{
 						"filetype",
-						padding = {left=0, right=1},
+						padding = {left=0, right=0},
+						icon_only = true,
 					},
 				},
 

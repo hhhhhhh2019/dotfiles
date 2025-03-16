@@ -55,3 +55,5 @@
 (package! evil-numbers)
 (package! reverse-im)
 (package! evil-multiedit)
+;; (package! rustowl :recipe
+;;   (:host github :repo "cordx56/rustowl" :files (:defaults "emacs/*")))

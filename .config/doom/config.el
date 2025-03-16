@@ -35,7 +35,7 @@
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 (setq catppuccin-flavor 'latte)
-(setq catppuccin-flavor 'mocha)
+;; (setq catppuccin-flavor 'mocha)
 (setq doom-theme 'catppuccin)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
@@ -211,6 +211,7 @@
 (setq org-preview-latex-default-process 'dvisvgm)
 (require 'org)
 (setq org-format-latex-options (plist-put org-format-latex-options :scale 2.0))
+(setq org-startup-with-inline-images 't)
 
 
 (setq dap-auto-configure-mode t)
@@ -230,3 +231,8 @@
          :request "launch"
          :program nil))
   )
+
+
+(defadvice align-regexp (around align-regexp-with-spaces activate)
+  (let ((indent-tabs-mode nil))
+    ad-do-it))
