@@ -1,52 +1,30 @@
-local wk  = require("which-key")
-local tsb = require("telescope.builtin")
-local tse = require("telescope").extensions
-
+local wk = require "which-key"
+local ts = require "telescope.builtin"
+local ext = require "telescope".extensions
+local dap = require "dap"
+local dapui = require "dapui"
 
 wk.add({
-	{"<space>f", group="telescope"},
-	{"<space>ff", tse.file_browser.file_browser, desc="file browser", mode="n"},
-	{"<space>fg", tsb.live_grep, desc="live grep", mode="n"},
-	{"<space>ft", tsb.treesitter, desc="treesitter", mode="n"},
-	{"<space>fu", tse.undo.undo, desc="undo history", mode="n"},
+	{ "<space>d", desc = "Debugger", mode = "n" },
+	{ "<space>db", dap.toggle_breakpoint, desc = "Toggle Breakpoint", mode = "n" },
+	{ "<space>dt", dapui.toggle, desc = "Toggle DapUI", mode = "n" },
+	{ "<space>dc", dap.continue, desc = "Continue", mode = "n" },
+	{ "<space>ds", dap.step_into, desc = "Step Into", mode = "n" },
+	{ "<space>do", dap.step_over, desc = "Step Over", mode = "n" },
+	{ "<space>de", dap.step_out, desc = "Step Out", mode = "n" },
 
-	{"<space>b", group="buffers"},
-	{"<space>bd", "<cmd>bp<bar>sp<bar>bn<bar>bd<cr>", desc="close buffer", mode="n"},
-	{"<space>bb", tsb.buffers, desc="list buffers", mode="n"},
+	{ "<space>f", desc = "Telescope", mode = "n" },
+	{ "<space>ff", ext.file_browser.file_browser, desc = "File Browser", mode = "n" },
+	{ "<space>fb", ts.buffers, desc = "List Buffers", mode = "n" },
+	{ "<space>fg", ts.live_grep, desc = "Live Grep", mode = "n" },
+	{ "<space>fu", ext.undo.undo, desc = "Undo", mode = "n" },
 
-	{"<space>c", group="code"},
-	{"<space>cr", "<cmd>IncRename<cr>", desc="renamer"},
-	{"<space>cd", group="diffview"},
-	{"<space>cdo", "<cmd>DiffviewOpen<cr>", desc="open diffview"},
-	{"<space>cdc", "<cmd>DiffviewClose<cr>", desc="close diffview"},
+	{ "<space>c", desc = "Code", mode = "n" },
+	{ "<space>cq", ts.quickfix, desc = "Quick Fix", mode = "n" },
+	{ "<space>cd", ts.diagnostics, desc = "Diagnostic", mode = "n" },
+	{ "<space>cr", ts.lsp_references, desc = "List References", mode = "n" },
+	{ "<space>cd", ts.lsp_definitions, desc = "List Defenitions", mode = "n" },
+	{ "<space>ct", ts.lsp_type_definitions, desc = "List Type Defenitions", mode = "n" },
 
-	{"<space>d", group="LSP"},
-	{"<space>dq", vim.lsp.buf.code_action, desc="list quick fixes"},
-	{"<space>dd", tsb.diagnostics, desc="list diagnostics"},
-	{"<space>dr", tsb.lsp_references, desc="references for word under the cursor"},
-	{"<space>df", vim.diagnostic.open_float, desc="open float diagnostic"},
-	{"<space>dh", vim.lsp.buf.hover, desc="open hover documentation"},
-
-	{"<F2>", require("dap").toggle_breakpoint, desc="toggle breakpoint"},
-	{"<F5>", require("dap").continue, desc="continue debugging"},
-	{"<F12>", function()
-		require("dapui").eval(vim.fn.input("Eval: "))
-	end, desc="eval expression"},
-	{"<F11>", require("dap").step_into, desc="step into"},
-	{"<F10>", require("dap").step_over, desc="step over"},
-	{"<F9>", require("dap").step_out, desc="step out"},
+	{ "<space>q", ":bp<bar>sp<bar>bn<bar>bd<CR>", desc = "Close Buffer", mode = "n" },
 })
-
-
-vim.keymap.set('n', '<C-S-Down>', ':move +1<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<C-S-Up>',  ':move -2<CR>', { noremap = true, silent = true })
-
-vim.keymap.set('v', '<C-S-Down>', ':MoveBlock(1)<CR>', { noremap = true, silent = true })
-vim.keymap.set('v', '<C-S-Up>', ':MoveBlock(-1)<CR>', { noremap = true, silent = true })
-vim.keymap.set('v', '<C-S-Left>', ':MoveHBlock(-1)<CR>', { noremap = true, silent = true })
-vim.keymap.set('v', '<C-S-Right>', ':MoveHBlock(1)<CR>', { noremap = true, silent = true })
-
-vim.keymap.set('t', '<C-h>', '<C-\\><C-n><C-w>h', { noremap = true, silent = true })
-vim.keymap.set('t', '<C-j>', '<C-\\><C-n><C-w>j', { noremap = true, silent = true })
-vim.keymap.set('t', '<C-k>', '<C-\\><C-n><C-w>k', { noremap = true, silent = true })
-vim.keymap.set('t', '<C-l>', '<C-\\><C-n><C-w>l', { noremap = true, silent = true })
