@@ -2,12 +2,13 @@ local wk = require "which-key"
 local ts = require "telescope.builtin"
 local ext = require "telescope".extensions
 local dap = require "dap"
-local dapui = require "dapui"
+-- local dapui = require "dapui"
+local dapview = require "dap-view"
 
 wk.add({
 	{ "<space>d", desc = "Debugger", mode = "n" },
 	{ "<space>db", dap.toggle_breakpoint, desc = "Toggle Breakpoint", mode = "n" },
-	{ "<space>dt", dapui.toggle, desc = "Toggle DapUI", mode = "n" },
+	{ "<space>dt", dapview.toggle, desc = "Toggle DapView", mode = "n" },
 	{ "<space>dc", dap.continue, desc = "Continue", mode = "n" },
 	{ "<space>ds", dap.step_into, desc = "Step Into", mode = "n" },
 	{ "<space>do", dap.step_over, desc = "Step Over", mode = "n" },
