@@ -112,7 +112,14 @@
 (setq org-startup-with-inline-images 't)
 
 
-
 (defadvice align-regexp (around align-regexp-with-spaces activate)
   (let ((indent-tabs-mode nil))
     ad-do-it))
+
+
+(after! gptel
+  (gptel-make-ollama "Ollama"
+    :host "localhost:11434"
+    :stream t
+    :models '(gemma3:latest))
+  )
