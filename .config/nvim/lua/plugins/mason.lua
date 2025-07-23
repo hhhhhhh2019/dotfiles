@@ -15,6 +15,10 @@ return {
 		handlers = {
 			function(config)
 				config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
+				config.capabilities.textDocument.foldingRange = {
+					dynamicRegistration = false,
+					lineFoldingOnly = true
+				}
 				require("mason-nvim-dap").default_setup(config)
 			end
 		}

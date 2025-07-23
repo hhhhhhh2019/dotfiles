@@ -24,3 +24,11 @@ vim.opt.cursorlineopt = "number"
 vim.opt.showmode = false
 
 vim.opt.clipboard = "unnamedplus"
+
+vim.opt.laststatus = 3
+
+vim.g.mapleader = "<space>"
+
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldlevelstart = 1000
