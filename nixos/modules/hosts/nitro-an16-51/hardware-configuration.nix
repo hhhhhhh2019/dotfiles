@@ -30,21 +30,15 @@
     };
 
     fileSystems."/" = {
-      fsType = "tmpfs";
-      options = [ "mode=755" ];
+      device = "/dev/disk/by-label/nixroot";
+      fsType = "btrfs";
+      options = [ "subvol=/root" ];
     };
 
     fileSystems."/boot" = {
       device = "/dev/disk/by-label/NIXBOOT";
       fsType = "vfat";
       options = [ "umask=007" ];
-    };
-
-    fileSystems."/persist" = {
-      device = "/dev/disk/by-label/nixroot";
-      fsType = "btrfs";
-      options = [ "subvol=/persist" ];
-      neededForBoot = true;
     };
 
     fileSystems."/nix" = {
