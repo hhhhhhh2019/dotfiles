@@ -1,22 +1,41 @@
 { inputs, self, ... }: {
   flake.nixosConfigurations.nitro-an16-51 = inputs.nixpkgs.lib.nixosSystem {
-    modules = [
-      inputs.preservation.nixosModules.default
-      self.nixosModules.nitro-an16-51-hardware
-      self.nixosModules.nitro-an16-51-configuration
-      #self.nixosModules.nitro-an16-51-preservation
-      self.nixosModules.plymouth
-      self.nixosModules.nix-config
-      self.nixosModules.bluetooth
-      self.nixosModules.default-environment
-      self.nixosModules.intel-graphics
-      self.nixosModules.apple-fonts
-      self.nixosModules.flatpak
-      self.nixosModules.printing
-      #self.nixosModules.vpn
-      self.nixosModules.tor
-      self.nixosModules.i2pd
-      self.nixosModules.gnome
-    ];
-  };
+      modules = [
+        self.nixosModules.default-environment
+        self.nixosModules.nitro-an16-51-hardware
+        self.nixosModules.intel-graphics
+        self.nixosModules.nvidia-nitro-an16-51
+        self.nixosModules.gnome
+
+        ({ pkgs, ... }: {
+          system.stateVersion = "26.05";
+
+          boot.loader.systemd-boot.enable = true;
+          boot.loader.efi.canTouchEfiVariables = false;
+          boot.loader.timeout = 0;
+
+          services.tlp.settings = {
+            RUNTIME_PM_ENABLE = "01:00.0";
+            DISK_DEVICES = "nvme0n1";
+          };
+
+          networking.hostName = "nitro-an16-51";
+          networking.networkmanager.enable = true;
+
+          time.timeZone = "Europe/Moscow";
+
+          i18n.defaultLocale = "ru_RU.UTF-8";
+          console.font = "latarcyrheb-sun32";
+
+          users.defaultUserShell = pkgs.zsh;
+          users.users = {
+            user = {
+              isNormalUser = true;
+              extraGroups = [ "wheel" ];
+              initialPassword = "123";
+            };
+          };
+        })
+      ];
+    };
 }

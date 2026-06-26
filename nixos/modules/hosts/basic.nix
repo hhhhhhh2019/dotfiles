@@ -1,5 +1,7 @@
 { inputs, self, ... }: {
-  flake.nixosModules.default-environment = { pkgs, ... }: {
+  flake.nixosModules.basic-environment = { pkgs, ... }: {
+    boot.kernelPackages = pkgs.linuxPackages_latest;
+
     programs.zsh = {
       enable = true;
       syntaxHighlighting.enable = true;
