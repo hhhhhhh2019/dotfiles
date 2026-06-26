@@ -35,5 +35,9 @@
     programs.git = {
       enable = true;
     };
+
+    programs.direnv = {
+      enable = true;
+    };
   };
 }
