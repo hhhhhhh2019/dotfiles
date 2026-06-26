@@ -14,6 +14,7 @@
       "app.zen_browser.zen"
       "com.github.flxzt.rnote"
       "org.telegram.desktop"
+      "org.libreoffice.LibreOffice"
     ];
 
     #systemd.user.services.flatpak-user-setup = {

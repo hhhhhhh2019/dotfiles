@@ -11,9 +11,12 @@
     boot.extraModulePackages = [ ];
     boot.kernelModules = [ "kvm-intel" ];
     boot.blacklistedKernelModules = [ ];
+    boot.kernelParams = [ ];
 
     nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
     hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
+    zramSwap.enable = true;
 
     services.linuwu_sense.enable = true;
 
@@ -58,5 +61,19 @@
       fsType = "btrfs";
       options = [ "subvol=/home" ];
     };
+
+    swapDevices = [{
+      device = "/swap/swapfile";
+      size = 16*1024; # 16 GiB
+      options = [ "discard" ];
+    }];
+
+    services.btrfs.autoScrub = {
+      enable = true;
+      interval = "weekly";
+      fileSystems = [ "/" ];
+    };
+
+    services.fstrim.enable = true;
   };
 }

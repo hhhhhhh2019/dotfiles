@@ -41,6 +41,8 @@
     ] ++ (with pkgs; [
       zbar
       tesseract
+      adw-gtk3
+      papirus-icon-theme
     ]);
   };
 }
