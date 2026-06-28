@@ -6,6 +6,7 @@
         self.nixosModules.intel-graphics
         self.nixosModules.nvidia-nitro-an16-51
         self.nixosModules.gnome
+        self.nixosModules.steam
 
         ({ pkgs, ... }: {
           system.stateVersion = "26.05";

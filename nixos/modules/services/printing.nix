@@ -95,6 +95,8 @@ in {
       enable = true;
       drivers = [
         (pkgs.callPackage epson_201601w {})
+        pkgs.epson-escpr
+        pkgs.epson-escpr2
       ];
     };
   };

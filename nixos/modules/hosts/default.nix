@@ -13,5 +13,11 @@
       self.nixosModules.i2pd
       self.nixosModules.apple-fonts
     ];
+
+    services.avahi = {
+      enable = true;
+      nssmdns4 = true;
+      openFirewall = true;
+    };
   };
 }

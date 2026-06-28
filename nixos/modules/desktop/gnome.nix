@@ -38,11 +38,18 @@
       caffeine
       shotzy
       clipboard-indicator
+      bluetooth-battery-meter
+      lock-keys-2
+      power-off-options
     ] ++ (with pkgs; [
       zbar
       tesseract
       adw-gtk3
       papirus-icon-theme
     ]);
+
+    environment.variables = {
+      TESSDATA_PREFIX = "${pkgs.tesseract}/share/tessdata";
+    };
   };
 }

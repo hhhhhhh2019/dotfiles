@@ -32,8 +32,10 @@
       };
     };
 
+    boot.initrd.luks.devices."root".device = "/dev/disk/by-label/nixroot";
+
     fileSystems."/" = {
-      device = "/dev/disk/by-label/nixroot";
+      device = "/dev/mapper/root";
       fsType = "btrfs";
       options = [ "subvol=/root" ];
     };
@@ -45,19 +47,19 @@
     };
 
     fileSystems."/nix" = {
-      device = "/dev/disk/by-label/nixroot";
+      device = "/dev/mapper/root";
       fsType = "btrfs";
       options = [ "subvol=/nix" ];
     };
 
     fileSystems."/swap" = {
-      device = "/dev/disk/by-label/nixroot";
+      device = "/dev/mapper/root";
       fsType = "btrfs";
       options = [ "subvol=/swap" ];
     };
 
     fileSystems."/home" = {
-      device = "/dev/disk/by-label/nixroot";
+      device = "/dev/mapper/root";
       fsType = "btrfs";
       options = [ "subvol=/home" ];
     };
