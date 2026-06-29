@@ -46,6 +46,7 @@
       tesseract
       adw-gtk3
       papirus-icon-theme
+      resources
     ]);
 
     environment.variables = {

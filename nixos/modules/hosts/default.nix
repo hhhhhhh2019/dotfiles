@@ -2,6 +2,8 @@
   flake.nixosModules.default-environment = {
     imports = [
       self.nixosModules.basic-environment
+      self.nixosModules.fwupd
+      self.nixosModules.documentation
       self.nixosModules.nix-config
       self.nixosModules.plymouth
       self.nixosModules.tlp

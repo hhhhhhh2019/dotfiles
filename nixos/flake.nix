@@ -6,6 +6,10 @@
     preservation.url = "github:nix-community/preservation";
     apple-fonts.url= "github:Lyndeno/apple-fonts.nix";
     nix-flatpak.url = "github:gmodena/nix-flatpak";
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v1.1.0";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs = inputs: inputs.flake-parts.lib.mkFlake
     { inherit inputs; }
