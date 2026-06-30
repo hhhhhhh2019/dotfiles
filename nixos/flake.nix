@@ -10,6 +10,10 @@
       url = "github:nix-community/lanzaboote/v1.1.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    portproton-nixos = {
+      url = "github:Redm00use/PortProton-NixOS";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs = inputs: inputs.flake-parts.lib.mkFlake
     { inherit inputs; }

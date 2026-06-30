@@ -1,4 +1,4 @@
-{ ... }: {
+{
   flake.nixosModules.nix-config = {
     nix.gc = {
       automatic = true;

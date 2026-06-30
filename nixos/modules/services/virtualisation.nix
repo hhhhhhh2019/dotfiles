@@ -1,13 +1,17 @@
 {
   flake.nixosModules.virtualisation = { pkgs, ... }: {
-    environment.systemPackages = [ pkgs.wl-clipboard ];
+    environment.systemPackages = with pkgs;[
+      wl-clipboard
+      virt-manager
+      guestfs-tools
+      virtiofsd
+    ];
 
     virtualisation = {
-      #tpm.enable = true;
-      #useSecureBoot = true;
       libvirtd = {
         enable = true;
         dbus.enable = true;
+        qemu.swtpm.enable = true;
       };
       podman = {
         enable = true;

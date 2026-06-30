@@ -2,7 +2,10 @@
   flake.nixosModules.gnome = { pkgs, ... }: {
     services.displayManager.gdm.enable = true;
     services.desktopManager.gnome.enable = true;
-    services.gnome.games.enable = false;
+    services.gnome = {
+      games.enable = false;
+      core-developer-tools.enable = true;
+    };
 
     qt = {
       enable = true;

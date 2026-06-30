@@ -14,6 +14,7 @@
       self.nixosModules.tor
       self.nixosModules.i2pd
       self.nixosModules.apple-fonts
+      self.nixosModules.video
     ];
 
     services.avahi = {

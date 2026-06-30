@@ -7,7 +7,7 @@
         self.nixosModules.intel-graphics
         self.nixosModules.nvidia-nitro-an16-51
         self.nixosModules.gnome
-        self.nixosModules.steam
+        self.nixosModules.games
         self.nixosModules.virtualisation
 
         ({ pkgs, ... }: {
@@ -44,7 +44,7 @@
           users.users = {
             user = {
               isNormalUser = true;
-              extraGroups = [ "wheel" ];
+              extraGroups = [ "wheel" "libvirtd" ];
               initialPassword = "123";
             };
           };
