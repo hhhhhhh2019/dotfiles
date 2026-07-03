@@ -13,6 +13,7 @@
       self.nixosModules.printing
       self.nixosModules.tor
       self.nixosModules.i2pd
+      self.nixosModules.avahi
       self.nixosModules.apple-fonts
       self.nixosModules.video
     ];
@@ -22,5 +23,7 @@
       nssmdns4 = true;
       openFirewall = true;
     };
+
+    #services.automatic-timezoned.enable = true;
   };
 }

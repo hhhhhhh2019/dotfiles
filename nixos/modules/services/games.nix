@@ -7,6 +7,8 @@
       gamescope-wsi
       #inputs.portproton-nixos.packages.${pkgs.stdenv.hostPlatform.system}.portproton
       (pkgs.callPackage "${inputs.portproton-nixos}/pkgs/portproton/package.nix" { })
+      file
+      jq
     ];
 
     hardware.steam-hardware.enable = true;

@@ -14,6 +14,10 @@
       url = "github:Redm00use/PortProton-NixOS";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    ewm = {
+      url = "https://codeberg.org/ezemtsov/ewm/archive/master.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs = inputs: inputs.flake-parts.lib.mkFlake
     { inherit inputs; }
