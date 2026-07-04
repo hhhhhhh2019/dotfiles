@@ -16,6 +16,7 @@
       self.nixosModules.avahi
       self.nixosModules.apple-fonts
       self.nixosModules.video
+      self.nixosModules.music
     ];
 
     services.avahi = {
