@@ -18,6 +18,8 @@
     };
 
     environment.systemPackages = with pkgs; [
+      libreoffice-qt-fresh
+
       (kdePackages.spectacle.override {
        tesseractLanguages = [ "all" ];
       })

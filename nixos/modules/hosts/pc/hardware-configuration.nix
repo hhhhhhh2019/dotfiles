@@ -53,6 +53,16 @@
         options = [ "subvol=/home" ];
       };
 
+      fileSystems."/mnt/hdd" = {
+        device = "/dev/sda1";
+        fsType = "btrfs";
+      };
+
+      fileSystems."/mnt/windows" = {
+        device = "/dev/nvme0n1p3";
+        fsType = "ntfs3";
+      };
+
       swapDevices = [];
 
       services.btrfs.autoScrub = {

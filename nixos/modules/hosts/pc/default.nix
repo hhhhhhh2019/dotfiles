@@ -14,6 +14,7 @@
         boot.loader.systemd-boot.enable = true;
         boot.loader.efi.canTouchEfiVariables = false;
         boot.loader.efi.efiSysMountPoint = "/efi";
+        boot.loader.systemd-boot.xbootldrMountPoint = "/boot";
         boot.loader.timeout = 5;
 
         services.displayManager.plasma-login-manager.settings = {

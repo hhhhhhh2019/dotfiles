@@ -45,6 +45,8 @@
       lock-keys-2
       power-off-options
     ] ++ (with pkgs; [
+      libreoffice-fresh
+
       zbar
       tesseract
       adw-gtk3
