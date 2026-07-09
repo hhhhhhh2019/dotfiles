@@ -34,7 +34,7 @@
       kdePackages.discover
       kdePackages.kjournald
       kdePackages.kmail
-      kdePackages.kmail-accounts-wizard
+      kdePackages.kmail-account-wizard
       kdePackages.kcharselect
       kdePackages.kcolorchooser
       kdePackages.kcolorpicker

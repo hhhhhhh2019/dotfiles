@@ -17,10 +17,8 @@
 
       zramSwap.enable = true;
 
-      boot.initrd.luks.devices."root".device = "/dev/disk/by-label/nixroot";
-
       fileSystems."/" = {
-        device = "/dev/mapper/root";
+        device = "/dev/disk/by-label/nixroot";
         fsType = "btrfs";
         options = [ "subvol=/root" ];
       };
@@ -38,19 +36,19 @@
       };
 
       fileSystems."/nix" = {
-        device = "/dev/mapper/root";
+        device = "/dev/disk/by-label/nixroot";
         fsType = "btrfs";
         options = [ "subvol=/nix" ];
       };
 
       fileSystems."/swap" = {
-        device = "/dev/mapper/root";
+        device = "/dev/disk/by-label/nixroot";
         fsType = "btrfs";
         options = [ "subvol=/swap" ];
       };
 
       fileSystems."/home" = {
-        device = "/dev/mapper/root";
+        device = "/dev/disk/by-label/nixroot";
         fsType = "btrfs";
         options = [ "subvol=/home" ];
       };
