@@ -14,7 +14,7 @@
     programs.vim = {
       enable = true;
       defaultEditor = true;
-      package = (pkgs.vim.override {}).customize {
+      package = (pkgs.vim-full.override {}).customize {
         name = "vim";
         vimrcConfig.customRC = ''
           syntax on
@@ -25,6 +25,7 @@
           set expandtab
           set tabstop=2
           set shiftwidth=2
+          set clipboard+=unnamedplus
           filetype plugin indent on
         '';
       };
