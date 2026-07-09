@@ -17,7 +17,6 @@
       package = (pkgs.vim-full.override {}).customize {
         name = "vim";
         vimrcConfig.customRC = ''
-          syntax on
           set autoindent
           set smartindent
           set smartcase
@@ -26,6 +25,7 @@
           set tabstop=2
           set shiftwidth=2
           set clipboard+=unnamedplus
+          syntax on
           filetype plugin indent on
         '';
       };

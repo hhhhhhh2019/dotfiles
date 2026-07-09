@@ -31,12 +31,22 @@
       kdePackages.wallpaper-engine-plugin
       kdiff3
       kdePackages.ksystemlog
+      kdePackages.discover
+      kdePackages.kjournald
+      kdePackages.kmail
+      kdePackages.kmail-accounts-wizard
       kdePackages.kcharselect
       kdePackages.kcolorchooser
       kdePackages.kcolorpicker
+      kdePackages.kdialog
+      kdePackages.ksshaskpass
+      kdePackages.skanpage
+      kdePackages.timed
+      kdePackages.isoimagewriter
       hardinfo2
       wl-clipboard
       vlc
+      qalculate-qt
 
       kdePackages.kio-fuse
       kdePackages.kio-admin
@@ -44,6 +54,10 @@
       kdePackages.kio-gdrive
       kdePackages.kio-zeroconf
       kdePackages.audiocd-kio
+
+      whitesur-kde
+      whitesur-gtk-theme
+      whitesur-icon-theme
     ];
   };
 }

@@ -1,9 +1,8 @@
 { inputs, self, ... }: {
-  flake.nixosModules.nitro-an16-51-hardware =
+  flake.nixosModules.pc-hardware = {
     { config, lib, pkgs, modulesPath, ... }: {
       imports = [
         (modulesPath + "/installer/scan/not-detected.nix")
-        self.nixosModules.linuwu_sense
       ];
 
       boot.initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "vmd" "nvme" "usb_storage" "uas" "sd_mod" "rtsx_pci_sdmmc" ];
@@ -18,20 +17,6 @@
 
       zramSwap.enable = true;
 
-      services.linuwu_sense.enable = true;
-
-      systemd.services.setup-linuwu-colors = {
-        description = "Set initial RGB zones for Linuwu-Sense";
-        after = [ "modprobe@linuwu_sense.service" ];
-        wantedBy = [ "multi-user.target" ];
-
-        serviceConfig = {
-          Type = "oneshot";
-          RemainAfterExit = true;
-          ExecStart = "${pkgs.bash}/bin/bash -c 'echo 4287f5,4287f5,4287f5,4287f5,100 | tee /sys/module/linuwu_sense/drivers/platform:acer-wmi/acer-wmi/four_zoned_kb/per_zone_mode'";
-        };
-      };
-
       boot.initrd.luks.devices."root".device = "/dev/disk/by-label/nixroot";
 
       fileSystems."/" = {
@@ -40,10 +25,16 @@
         options = [ "subvol=/root" ];
       };
 
+      fileSystems."/efi" = {
+        device = "/dev/disk/by-uuid/2607-4097";
+        fsType = "vfat";
+        options = [ "fmask=0077" "dmask=0077" ];
+      };
+
       fileSystems."/boot" = {
         device = "/dev/disk/by-label/NIXBOOT";
         fsType = "vfat";
-        options = [ "umask=007" ];
+        options = [ "fmask=0077" "dmask=0077" ];
       };
 
       fileSystems."/nix" = {
@@ -64,11 +55,7 @@
         options = [ "subvol=/home" ];
       };
 
-      swapDevices = [{
-        device = "/swap/swapfile";
-        size = 16*1024; # 16 GiB
-        options = [ "discard" ];
-      }];
+      swapDevices = [];
 
       services.btrfs.autoScrub = {
         enable = true;
@@ -78,4 +65,5 @@
 
       services.fstrim.enable = true;
     };
-  }
+  };
+}

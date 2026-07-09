@@ -1,5 +1,5 @@
-{ inputs, self, ... }: {
-  flake.nixosConfigurations.nitro-an16-51 = inputs.nixpkgs.lib.nixosSystem {
+  { inputs, self, ... }: {
+    flake.nixosConfigurations.nitro-an16-51 = inputs.nixpkgs.lib.nixosSystem {
       modules = [
         self.nixosModules.default-environment
         self.nixosModules.secureboot
@@ -51,4 +51,4 @@
         })
       ];
     };
-}
+  }
