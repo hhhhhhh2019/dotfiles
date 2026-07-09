@@ -17,8 +17,8 @@
 
         services.displayManager.plasma-login-manager.settings = {
           Autologin = {
-            User = "user"
-            Session = "plasma.desktop"
+            User = "user";
+            Session = "plasma.desktop";
           };
         };
 
