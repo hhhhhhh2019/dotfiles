@@ -1,5 +1,9 @@
-{
+{ self, ... }: {
   flake.nixosModules.plasma = { pkgs, ... }: {
+    imports = [
+      self.nixosModules.spelling
+    ];
+
     services.displayManager.plasma-login-manager.enable = true;
     services.desktopManager.plasma6.enable = true;
 
@@ -24,10 +28,6 @@
        tesseractLanguages = [ "all" ];
       })
 
-      hunspell
-      hunspellDicts.ru_RU
-      hunspellDicts.en-us-large
-
       kdePackages.plasma-thunderbolt
       kdePackages.plasma-firewall
       kdePackages.wallpaper-engine-plugin
@@ -42,6 +42,7 @@
       kdePackages.kcolorpicker
       kdePackages.kdialog
       kdePackages.ksshaskpass
+      kdePackages.filelight
       kdePackages.skanpage
       kdePackages.timed
       kdePackages.isoimagewriter

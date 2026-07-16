@@ -47,6 +47,10 @@
     ] ++ (with pkgs; [
       libreoffice-fresh
 
+      hunspell
+      hunspellDicts.ru_RU
+      hunspellDicts.en-us-large
+
       zbar
       tesseract
       adw-gtk3

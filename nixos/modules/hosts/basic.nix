@@ -47,6 +47,8 @@
 
     environment.systemPackages = with pkgs; [
       devenv
+      pciutils
+      usbutils
     ];
   };
 }

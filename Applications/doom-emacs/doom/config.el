@@ -33,7 +33,7 @@
   :init
   (setq reverse-im-char-fold t)
   (setq reverse-im-read-char-advice-function #'reverse-im-read-char-include)
-  (setq reverse-im-input-methods '("ukrainian-computer"))
+  (setq reverse-im-input-methods '("russian-computer"))
   :config
   (reverse-im-mode t))
 

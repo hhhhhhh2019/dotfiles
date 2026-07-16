@@ -1,5 +1,5 @@
 { self, ... }: {
-  flake.nixosModules.default-environment = {
+  flake.nixosModules.default-environment = { pkgs, ... }: {
     imports = [
       self.nixosModules.basic-environment
       self.nixosModules.fwupd
@@ -24,6 +24,11 @@
       nssmdns4 = true;
       openFirewall = true;
     };
+
+    hardware.i2c.enable = true;
+    environment.systemPackages = with pkgs; [
+      ddcutil
+    ];
 
     #services.automatic-timezoned.enable = true;
   };

@@ -7,6 +7,7 @@
       self.nixosModules.amd-graphics
       self.nixosModules.plasma
       self.nixosModules.games
+      self.nixosModules.virtualisation
 
       ({ pkgs, ... }: {
         system.stateVersion = "26.05";

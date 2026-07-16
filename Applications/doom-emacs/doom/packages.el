@@ -13,3 +13,4 @@
 (package! reverse-im)
 (package! catppuccin-theme)
 (package! auto-dark)
+(package! dts-mode)

@@ -36,8 +36,8 @@
         RUNTIME_PM_ON_SAV = "auto";
 
         PCIE_ASPM_ON_AC = "default";
-        PCIE_ASPM_ON_BAT = "powersave";
-        PCIE_ASPM_ON_SAV = "powersupersave";
+        PCIE_ASPM_ON_BAT = "default";
+        PCIE_ASPM_ON_SAV = "default";
       };
     };
   };
