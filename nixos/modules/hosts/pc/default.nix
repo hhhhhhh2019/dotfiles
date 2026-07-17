@@ -8,9 +8,16 @@
       self.nixosModules.plasma
       self.nixosModules.games
       self.nixosModules.virtualisation
+      self.nixosModules.edl
 
       ({ pkgs, ... }: {
         system.stateVersion = "26.05";
+
+        systemd.services.nix-daemon.environment = {
+          http_proxy = "socks5h://127.0.0.1:9050";
+          https_proxy = "socks5h://127.0.0.1:9050";
+          socks_proxy = "socks5://127.0.0.1:9050";
+        };
 
         boot.loader.systemd-boot.enable = true;
         boot.loader.efi.canTouchEfiVariables = false;

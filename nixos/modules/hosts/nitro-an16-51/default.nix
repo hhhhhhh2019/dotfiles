@@ -9,6 +9,7 @@
         self.nixosModules.gnome
         self.nixosModules.games
         self.nixosModules.virtualisation
+        self.nixosModules.edl
 
         ({ pkgs, ... }: {
           system.stateVersion = "26.05";
