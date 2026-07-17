@@ -47,6 +47,8 @@
     ] ++ (with pkgs; [
       libreoffice-fresh
 
+      geary
+
       hunspell
       hunspellDicts.ru_RU
       hunspellDicts.en-us-large
