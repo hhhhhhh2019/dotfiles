@@ -14,10 +14,10 @@
         UseBridges = true;
         ClientTransportPlugin = "webtunnel exec ${pkgs.webtunnel}/bin/client";
         Bridge = [
-          "webtunnel [2001:db8:582a:3e92:df7a:c770:19f7:64e0]:443 67313AEAF0319B172CD12EAEAFCD6F29C12171AB url=https://tor-bridge.scaledra.com/Cgb29jTFCUBdTGEz8BDkQFrn ver=0.0.4"
-          "webtunnel [2001:db8:bce8:edf7:7b33:480b:fde5:4840]:443 A417275864EA76F47CEAD4071273D82917283A12 url=https://www3.ruhnama.net/Ly4uulgoy2LWmMX3fk007Gme ver=0.0.3"
-          "webtunnel [2001:db8:e65a:afaf:7443:b5a5:f71d:ca4]:443 6FE31638D6084EDA6D94FADC99B0EDD109D6AE3A url=https://eu.g3wip.uk/7ePavP0vnTTelEJWeJ4NwpGE ver=0.0.1"
-          "webtunnel [2001:db8:603c:2434:873c:4d58:9fd0:91e0]:443 56626E4B996EB1C9F4C0B573888E8EE3C4E28472 url=https://kriptohomyaki.org/4USXwPrEoemgJOXPmgjxPOAkQa1UG7To ver=0.0.3"
+          "webtunnel [2001:db8:1640:379c:ad30:db5f:bff5:37d0]:443 AF8F7548C886D6F53A652411DBB71D089517085A url=https://app05.oneclickhost.eu/alpfZGTB9FckCgOkOOA0OHlh ver=0.0.5"
+          "webtunnel [2001:db8:1ecc:edad:a642:10d8:adc1:c886]:443 C2176476CDD39DFAB550BBC94E1DF3980398E5FC url=https://mstdn.plus/Lohguu6eequaethu ver=0.0.2"
+          "webtunnel [2001:db8:50a9:c546:36be:96ad:4cd1:cfff]:443 D20CE64A82CF6E6DB6F4F95C1F8FA81B06C10888 url=https://cdn-35.triplebit.dev/iethae6ahvoo1ieV ver=0.0.2"
+          "webtunnel [2001:db8:d4f6:87b2:888f:72a3:f117:eaf4]:443 8E860A30788AA17A84C0AFB8F111BAB0D5504FE0 url=https://flabrance.tech/aTzB6XNVkeh2XqT9XQ0RHmHw ver=0.0.2"
         ];
       };
     };
