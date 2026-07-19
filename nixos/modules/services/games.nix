@@ -6,7 +6,7 @@
       mangohud
       gamescope-wsi
       #inputs.portproton-nixos.packages.${pkgs.stdenv.hostPlatform.system}.portproton
-      (pkgs.callPackage "${inputs.portproton-nixos}/pkgs/portproton/package.nix" { })
+      #(pkgs.callPackage "${inputs.portproton-nixos}/pkgs/portproton/package.nix" { })
       file
       jq
     ];
@@ -15,6 +15,11 @@
     programs.gamemode = {
       enable = true;
       enableRenice = true;
+    };
+    programs.gamescope = {
+      enable = true;
+      enableWsi = true;
+      capSysNice = true;
     };
     programs.steam = {
       enable = true;
