@@ -99,5 +99,22 @@ in {
         pkgs.epson-escpr2
       ];
     };
+
+    hardware.sane = {
+      enable = true;
+      openFirewall = true;
+      dsseries.enable = true;
+      brscan5.enable = true;
+      brscan4.enable = true;
+      extraBackends = with pkgs; [
+        sane-airscan
+        sane-backends
+        brscan5
+        brscan4
+        epkowa
+        dsseries
+        utsushi
+      ];
+    };
   };
 }
