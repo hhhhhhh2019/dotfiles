@@ -12,6 +12,17 @@
     security.pam.services.plasma-login-manager.kwallet.enable = true;
     programs.partition-manager.enable = true;
 
+    programs.ssh.startAgent = true;
+
+    programs.ssh.extraConfig = ''
+      AddKeysToAgent yes
+    '';
+
+    environment.extraInit = ''
+      export SSH_ASKPASS="${pkgs.kdePackages.ksshaskpass}/bin/ksshaskpass"
+      export GIT_ASKPASS="${pkgs.kdePackages.ksshaskpass}/bin/ksshaskpass"
+    '';
+
     services.flatpak.overrides.settings = {
       global = {
         Context.filesystems = [

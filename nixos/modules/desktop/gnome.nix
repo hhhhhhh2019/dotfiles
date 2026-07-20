@@ -1,5 +1,9 @@
-{
+{ self, ... }: {
   flake.nixosModules.gnome = { pkgs, ... }: {
+    imports = [
+      self.nixosModules.spelling
+    ];
+
     services.displayManager.gdm.enable = true;
     services.desktopManager.gnome.enable = true;
     services.gnome = {
