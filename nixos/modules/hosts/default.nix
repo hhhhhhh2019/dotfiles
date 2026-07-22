@@ -13,7 +13,7 @@
       self.nixosModules.printing
       self.nixosModules.tor
       self.nixosModules.i2pd
-      self.nixosModules.avahi
+      self.nixosModules.desktop-network
       self.nixosModules.apple-fonts
       self.nixosModules.video
       self.nixosModules.music

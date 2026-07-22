@@ -10,7 +10,6 @@
         self.nixosModules.games
         self.nixosModules.virtualisation
         self.nixosModules.edl
-        self.nixosModules.dnscrypt-proxy
 
         ({ pkgs, ... }: {
           system.stateVersion = "26.05";

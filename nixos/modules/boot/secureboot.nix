@@ -18,10 +18,12 @@
         includeMicrosoftKeys = true;
       };
       measuredBoot = {
-        enable = true;
+        enable = false;
         pcrs = [ 0 4 7 ];
       };
       configurationLimit = 8;
     };
+
+    #systemd.services.systemd-tpm2-setup.enable = false;
   };
 }
