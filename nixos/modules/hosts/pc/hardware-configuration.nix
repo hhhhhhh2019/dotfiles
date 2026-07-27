@@ -24,7 +24,7 @@
       };
 
       fileSystems."/efi" = {
-        device = "/dev/disk/by-uuid/2607-4097";
+        device = "/dev/disk/by-uuid/2E40-8DA5";
         fsType = "vfat";
         options = [ "fmask=0077" "dmask=0077" ];
       };
@@ -53,15 +53,15 @@
         options = [ "subvol=/home" ];
       };
 
-      fileSystems."/mnt/hdd" = {
-        device = "/dev/sda1";
-        fsType = "btrfs";
-      };
+      #fileSystems."/mnt/hdd" = {
+      #  device = "/dev/sda1";
+      #  fsType = "btrfs";
+      #};
 
-      fileSystems."/mnt/windows" = {
-        device = "/dev/nvme0n1p3";
-        fsType = "ntfs3";
-      };
+      #fileSystems."/mnt/windows" = {
+      #  device = "/dev/nvme0n1p3";
+      #  fsType = "ntfs3";
+      #};
 
       swapDevices = [];
 

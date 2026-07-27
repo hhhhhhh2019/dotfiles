@@ -30,6 +30,8 @@
       ddcutil
     ];
 
+    boot.supportedFilesystems = [ "ntfs" ];
+
     #services.automatic-timezoned.enable = true;
   };
 }

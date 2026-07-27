@@ -1,5 +1,15 @@
 {
   flake.nixosModules.desktop-network = {
+    networking.firewall = {
+      enable = true;
+      allowedTCPPortRanges = [
+        { from = 1024; to = 65535; }
+      ];
+      allowedUDPPortRanges = [
+        { from = 1024; to = 65535; }
+      ];
+    };
+
     services.dnscrypt-proxy = {
       enable = true;
       settings = {
