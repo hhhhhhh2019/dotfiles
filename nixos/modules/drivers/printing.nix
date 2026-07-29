@@ -106,15 +106,15 @@ in {
       dsseries.enable = true;
       brscan5.enable = true;
       brscan4.enable = true;
-      extraBackends = with pkgs; [
-        sane-airscan
-        sane-backends
-        brscan5
-        brscan4
-        epkowa
-        dsseries
-        utsushi
-      ];
+      #extraBackends = with pkgs; [
+      #  sane-airscan
+      #  sane-backends
+      #  brscan5
+      #  brscan4
+      #  epkowa
+      #  dsseries
+      #  utsushi
+      #];
     };
   };
 }
