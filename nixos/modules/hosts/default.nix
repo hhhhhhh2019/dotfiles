@@ -28,7 +28,11 @@
     hardware.i2c.enable = true;
     environment.systemPackages = with pkgs; [
       ddcutil
+      net-tools
     ];
+
+    #services.logmein-hamachi.enable = true;
+    #programs.haguichi.enable = true;
 
     boot.supportedFilesystems = [ "ntfs" ];
 

@@ -18,7 +18,7 @@
         includeMicrosoftKeys = true;
       };
       measuredBoot = {
-        enable = false;
+        enable = true;
         pcrs = [ 0 4 7 ];
       };
       configurationLimit = 8;

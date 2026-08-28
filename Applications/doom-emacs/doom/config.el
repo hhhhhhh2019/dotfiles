@@ -13,8 +13,8 @@
 (use-package! auto-dark
   :init
   (setq auto-dark-themes '((catppuccin) (catppuccin)))
-  (setq! doom-theme nil)
-  (setq! custom-safe-themes t)
+  (setq doom-theme nil)
+  (setq custom-safe-themes t)
   (add-hook 'auto-dark-dark-mode-hook
     (lambda ()
       (setq catppuccin-flavor 'mocha)
@@ -37,9 +37,6 @@
   :config
   (reverse-im-mode t))
 
-(with-eval-after-load 'corfu-auto
-  (setq corfu-auto nil))
-
 ;; (setq-default tab-always-indent 'complete)
 ;; (setq-default c-tab-always-indent 'complete)
 
@@ -48,22 +45,16 @@
 (setq indent-line-function 'insert-tab)
 (setq-default c-ts-mode-indent-offset 4)
 
+(after! eglot
+  (add-to-list 'eglot-ignored-server-capabilities :documentOnTypeFormattingProvider))
+
 (with-eval-after-load 'projectile
   (setq projectile-git-fd-args "-H -0 -E .git -tf"))
-
 
 (custom-set-faces!
   `(font-lock-property-name-face :foreground ,(doom-color 'fg))
   `(font-lock-property-use-face :foreground ,(doom-color 'fg))
   `(font-lock-function-name-face :foreground ,(doom-color 'fg)))
-
-(setq
- gptel-model 'llama3.2:latest
- gptel-backend (gptel-make-ollama "Ollama"
-                 :host "localhost:11434"
-                 :stream t
-                 :models '(llama3.2:latest)))
-
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `with-eval-after-load' block, otherwise Doom's defaults may override your

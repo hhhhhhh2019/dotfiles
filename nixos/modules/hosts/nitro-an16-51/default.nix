@@ -10,8 +10,17 @@
         self.nixosModules.games
         self.nixosModules.virtualisation
         self.nixosModules.edl
+        self.nixosModules.zapret
 
         ({ pkgs, ... }: {
+          networking.extraHosts = ''
+            127.0.0.1 auth3.vintagestory.at
+          '';
+
+          security.pki.certificateFiles = [
+            ./vintagestory.cert
+          ];
+
           system.stateVersion = "26.05";
 
           boot.loader.systemd-boot.enable = true;

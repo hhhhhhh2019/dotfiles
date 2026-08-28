@@ -10,6 +10,7 @@
     virtualisation = {
       libvirtd = {
         enable = true;
+        parallelShutdown = 3;
         dbus.enable = true;
         qemu.swtpm.enable = true;
       };
@@ -20,6 +21,16 @@
       waydroid = {
         enable = true;
         package = pkgs.waydroid-nftables;
+      };
+    };
+
+    systemd.services.libvirtd = {
+      requires = [ "libvirtd-config.service" ];
+      after = [ "libvirtd-config.service" ];
+
+      serviceConfig = {
+        LoadCredentialEncrypted = "";
+        Environment = "LIBVIRTD_ARGS=\"--timeout 120\"";
       };
     };
   };

@@ -8,41 +8,49 @@
 
     services.i2pd = {
       enable = true;
-      address = "127.0.0.1";
-      ntcp = false;
-      ntcp2 = {
-        enable = true;
-        published = false;
+      settings = {
+        ntcp = false;
+        ntcp2 = {
+          enabled = true;
+          published = false;
+        };
+        ssu = false;
+        ssu2 = {
+          enabled = true;
+          published = false;
+        };
+        bob.enabled = false; # 2827
+        sam.enabled = true; # 7656
+        #websocket.enabled = false; # 7666
+        http.enabled = true;
+        httpproxy = {
+          enabled = true; # 4444
+          outproxy = "http://outproxy.acetone.i2p:3128";
+          outbound.length = 1;
+          inbound.length = 1;
+        };
+        socksproxy = {
+          enabled = true; # 4447
+          "outproxy.enabled" = true;
+          "outproxy" = "127.0.0.1";
+          outproxyport = 4500;
+        };
       };
-      ssu = false;
-      ssu2 = {
-        enable = true;
-        published = false;
-      };
-      inTunnels = {
-
-      };
-      outTunnels = {
+      clientTunnels = {
         socks-outproxy-tcp = {
-          enable = true;
           type = "client";
           address = "127.0.0.1";
           port = 4500;
           keys = "transient-outproxy";
           destination = "outproxy.acetone.i2p";
-          destinationPort = 1080;
-          inbound = {
-            length = 1;
-            quantity = 1;
-          };
-          outbound = {
-            length = 1;
-            quantity = 1;
-          };
+          destinationport = 1080;
+          inbound.length = 1;
+          outbound.length = 1;
+          inbound.lengthVariance = 1;
+          outbound.lengthVariance = 1;
         };
 
         socks-outproxy-udp = {
-          enable = true;
           type = "udpclient";
           address = "127.0.0.1";
           port = 4500;
@@ -51,24 +59,6 @@
           destinationPort = 1080;
         };
       };
-      proto = {
-        http.enable = true;
-        httpProxy = {
-          enable = true; # 4444
-          outproxy = "http://outproxy.acetone.i2p:3128";
-          outbound.length = 1;
-          inbound.length = 1;
-        };
-        socksProxy = {
-          enable = true; # 4447
-          outproxyEnable = true;
-          outproxy = "127.0.0.1";
-          outproxyPort = 4500;
-        };
-        bob.enable = false; # 2827
-        sam.enable = true; # 7656
-      };
-      websocket.enable = false; # 7666
     };
   };
 }

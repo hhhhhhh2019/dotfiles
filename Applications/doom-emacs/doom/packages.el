@@ -14,3 +14,4 @@
 (package! catppuccin-theme)
 (package! auto-dark)
 (package! dts-mode)
+(package! kconfig-mode)

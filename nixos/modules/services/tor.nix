@@ -14,13 +14,10 @@
         UseBridges = true;
         ClientTransportPlugin = "webtunnel exec ${pkgs.webtunnel}/bin/client";
         Bridge = [
-          "118.241.190.171:45883 3563137EC7EDD0D86B9D3109BA63D933FAA22958"
-          "185.177.207.197:18197 382AD67F3914B9482AB77540C432F074CDE7C782"
-
-          #"webtunnel [2001:db8:1640:379c:ad30:db5f:bff5:37d0]:443 AF8F7548C886D6F53A652411DBB71D089517085A url=https://app05.oneclickhost.eu/alpfZGTB9FckCgOkOOA0OHlh ver=0.0.5"
-          #"webtunnel [2001:db8:1ecc:edad:a642:10d8:adc1:c886]:443 C2176476CDD39DFAB550BBC94E1DF3980398E5FC url=https://mstdn.plus/Lohguu6eequaethu ver=0.0.2"
-          #"webtunnel [2001:db8:50a9:c546:36be:96ad:4cd1:cfff]:443 D20CE64A82CF6E6DB6F4F95C1F8FA81B06C10888 url=https://cdn-35.triplebit.dev/iethae6ahvoo1ieV ver=0.0.2"
-          #"webtunnel [2001:db8:d4f6:87b2:888f:72a3:f117:eaf4]:443 8E860A30788AA17A84C0AFB8F111BAB0D5504FE0 url=https://flabrance.tech/aTzB6XNVkeh2XqT9XQ0RHmHw ver=0.0.2"
+          "webtunnel [2001:db8:d0f2:6cd4:8630:8185:18d2:a5c]:443 5A94C0CDB0ED58681BDAA8FDBC53F5C9E32058F8 url=https://beefstrognoff.com/xRiEjTMRdkc9l7vrlASBmOus ver=0.0.4"
+          "webtunnel [2001:db8:dee9:5852:b4dc:7e14:21bd:c99b]:443 8ADF1761FA735FDD763781BB94A16EAB64A1CF6C url=https://app01.oneclickhost.eu/WJSgXJRlNnMStkuLZygVJ7lo ver=0.0.6"
+          "webtunnel [2001:db8:61d8:dd06:ee48:5658:1005:8c1a]:443 ED7E43FDFA82588D3E01B713F649C5C00C452B0A url=https://mdapi.ch/api/v1/proxy/U84is7V9U8rB0ZgnWKfs65lmwsvprN9x ver=0.0.5"
+          "webtunnel [2001:db8:b25f:7b5c:ea:7689:d15e:3389]:443 669F835F5358D33A79DDDD559A3A167B104FF3BC url=https://dsl.one.pl/X7yJZdFkZTGdQkMMclV4qdVz ver=0.0.5"
         ];
       };
     };

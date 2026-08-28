@@ -49,7 +49,7 @@
       lock-keys-2
       power-off-options
     ] ++ (with pkgs; [
-      libreoffice-fresh
+      libreoffice
 
       geary
 
@@ -62,6 +62,10 @@
       adw-gtk3
       papirus-icon-theme
       resources
+
+      gnome-tweaks
+
+      unrar
     ]);
 
     environment.variables = {

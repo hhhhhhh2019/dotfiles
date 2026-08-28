@@ -19,7 +19,7 @@
         require_dnssec = true;
         require_nolog = true;
         require_nofilter = true;
-        http3 = true;
+        http3 = false;
         http3_probe = false;
         # proxy = 'socks5://dnscrypt:dnscrypt@127.0.0.1:9050'
         server_names = ["scaleway-fr" "cloudflare"];
@@ -31,7 +31,7 @@
       settings.Resolve = {
         DNS = [ "127.0.0.1:5354" "[::]:5354" ];
         Domains = [ "~." ];
-        DNSSEC = "yes";
+        DNSSEC = "no";
         FallbackDNS = null;
         LLMNR = "no";
         MulticastDNS = "no";
