@@ -116,5 +116,9 @@ in {
       #  utsushi
       #];
     };
+
+    environment.systemPackages = with pkgs; [
+      gutenprint
+    ];
   };
 }

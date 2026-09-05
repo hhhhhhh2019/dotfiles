@@ -9,6 +9,8 @@
     services.i2pd = {
       enable = true;
       settings = {
+        upnp.enabled = false;
+        port = 43098;
         ntcp = false;
         ntcp2 = {
           enabled = true;
@@ -37,6 +39,13 @@
         };
       };
       clientTunnels = {
+        tg-mtproxy-2 = {
+          type = "client";
+          address = "127.0.0.1";
+          port = 4402;
+          destination = "vp3vans4ra3vpo24orm5seaxvod4x4lwiqajrfazb62hfwb45ddq.b32.i2p";
+          keys = "transient-tg-mtproxy";
+        };
         socks-outproxy-tcp = {
           type = "client";
           address = "127.0.0.1";

@@ -32,12 +32,16 @@
         };
       };
 
-      boot.initrd.luks.devices."root".device = "/dev/disk/by-label/nixroot";
+      boot.initrd.luks.devices."root" = {
+        device = "/dev/disk/by-label/nixroot";
+        bypassWorkqueues = true;
+        allowDiscards = true;
+      };
 
       fileSystems."/" = {
         device = "/dev/mapper/root";
         fsType = "btrfs";
-        options = [ "subvol=/root" ];
+        options = [ "subvol=/root" "compress=zstd" "autodefrag" ];
       };
 
       fileSystems."/boot" = {
@@ -49,7 +53,7 @@
       fileSystems."/nix" = {
         device = "/dev/mapper/root";
         fsType = "btrfs";
-        options = [ "subvol=/nix" ];
+        options = [ "subvol=/nix" "compress=zstd" "autodefrag" ];
       };
 
       fileSystems."/swap" = {
@@ -61,7 +65,7 @@
       fileSystems."/home" = {
         device = "/dev/mapper/root";
         fsType = "btrfs";
-        options = [ "subvol=/home" ];
+        options = [ "subvol=/home" "compress=zstd" "autodefrag" ];
       };
 
       swapDevices = [{
@@ -73,7 +77,7 @@
       services.btrfs.autoScrub = {
         enable = true;
         interval = "weekly";
-        fileSystems = [ "/" ];
+        fileSystems = [ "/" "/nix" "/home" ];
       };
 
       services.fstrim.enable = true;

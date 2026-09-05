@@ -19,7 +19,7 @@
         dockerCompat = true;
       };
       waydroid = {
-        enable = true;
+        enable = false;
         package = pkgs.waydroid-nftables;
       };
     };

@@ -22,7 +22,7 @@
         http3 = false;
         http3_probe = false;
         # proxy = 'socks5://dnscrypt:dnscrypt@127.0.0.1:9050'
-        server_names = ["scaleway-fr" "cloudflare"];
+        server_names = ["a-and-a" "cloudflare"];
       };
     };
     

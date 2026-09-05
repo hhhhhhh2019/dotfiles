@@ -1,0 +1,217 @@
+{
+  "nodes": {
+    "doomdir": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1783603851,
+        "narHash": "sha256-PXn0v4NR75U7/FpkaZ9GD6HPepVY5vVT48tMd1tMgdQ=",
+        "owner": "marienz",
+        "repo": "nix-doom-emacs-unstraightened",
+        "rev": "4c63e8a411f815bd2473e5ced94dc4b8bf31d240",
+        "type": "github"
+      },
+      "original": {
+        "owner": "marienz",
+        "ref": "doomdir",
+        "repo": "nix-doom-emacs-unstraightened",
+        "type": "github"
+      }
+    },
+    "doomemacs": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1788470853,
+        "narHash": "sha256-8WAkrAleQjpMVhDrY/A9TcPCPizjwGLB4Ttu6qi2O7w=",
+        "owner": "doomemacs",
+        "repo": "core",
+        "rev": "539db7daf80deb6965870e90af0544a608603e25",
+        "type": "github"
+      },
+      "original": {
+        "owner": "doomemacs",
+        "repo": "core",
+        "type": "github"
+      }
+    },
+    "doomemacs-modules": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1788284745,
+        "narHash": "sha256-W+Xwss52Eb6K+I7TRaCU3Z5zPxmo0PfWbNPNLJv1TjE=",
+        "owner": "doomemacs",
+        "repo": "modules",
+        "rev": "d57ab52a3425b6d39564fb011b0e9571da0e270f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "doomemacs",
+        "repo": "modules",
+        "type": "github"
+      }
+    },
+    "emacs-overlay": {
+      "inputs": {
+        "nixpkgs": [
+          "nix-doom-emacs"
+        ],
+        "nixpkgs-stable": [
+          "nix-doom-emacs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1788525252,
+        "narHash": "sha256-Dds1EFdMzqubq2s1XfPudF8HUgYdbmXsVNZvrghZSlU=",
+        "owner": "nix-community",
+        "repo": "emacs-overlay",
+        "rev": "45fb2af019888900111ca7cc6d015edc7f29b28a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "emacs-overlay",
+        "type": "github"
+      }
+    },
+    "flake-parts": {
+      "inputs": {
+        "nixpkgs-lib": "nixpkgs-lib"
+      },
+      "locked": {
+        "lastModified": 1788450739,
+        "narHash": "sha256-glZLQlzIn1fXH6PazR2iUmTo7kzzyYSshrWhLS9TqCU=",
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "rev": "31729ca8cbdb4fa927b34e5f4353e6a83f39e993",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "type": "github"
+      }
+    },
+    "import-tree": {
+      "locked": {
+        "lastModified": 1788467110,
+        "narHash": "sha256-ljEMTXP/rH0tOvDzc9gzwww6KcHRPRnEHzd9lK48V7s=",
+        "owner": "denful",
+        "repo": "import-tree",
+        "rev": "eb1b52eaecc57f7c136d07ae8a93e724dfecac46",
+        "type": "github"
+      },
+      "original": {
+        "owner": "denful",
+        "repo": "import-tree",
+        "type": "github"
+      }
+    },
+    "nix-doom-emacs": {
+      "inputs": {
+        "doomdir": "doomdir",
+        "doomemacs": "doomemacs",
+        "doomemacs-modules": "doomemacs-modules",
+        "emacs-overlay": "emacs-overlay",
+        "nixpkgs": "nixpkgs",
+        "systems": "systems"
+      },
+      "locked": {
+        "lastModified": 1788525982,
+        "narHash": "sha256-ZCw4CA8mD1kf+CuO6vfuqA4vWiSsHAru+08wDT4uMfI=",
+        "owner": "marienz",
+        "repo": "nix-doom-emacs-unstraightened",
+        "rev": "d144a4f01694b9b79cfd9354bce90a2494785ae0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "marienz",
+        "repo": "nix-doom-emacs-unstraightened",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1788372231,
+        "narHash": "sha256-4ua7nluyuvF5SVIa2nBTCTW9ZiuzYuSBZQk4EdwOWhI=",
+        "rev": "9387b3fcc0c23c86661636da63faabad4235a0a6",
+        "type": "tarball",
+        "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.11pre1066425.9387b3fcc0c2/nixexprs.tar.xz"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "type": "indirect"
+      }
+    },
+    "nixpkgs-lib": {
+      "locked": {
+        "lastModified": 1788057806,
+        "narHash": "sha256-DTQSMxzDWmT0zhguthvegnVkn7CFqGCv4IHCzk5ZUpM=",
+        "owner": "nix-community",
+        "repo": "nixpkgs.lib",
+        "rev": "596e2e3940e09b2abbeb03f75fa1828c57fcd72c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "nixpkgs.lib",
+        "type": "github"
+      }
+    },
+    "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1788531059,
+        "narHash": "sha256-hLD4l3QOGBQhkVp3mQ2lJ/YbEi99qUgKapb40KovZ88=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "801bef6abd86b91e51083066b83fb354a11fc640",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "flake-parts": "flake-parts",
+        "import-tree": "import-tree",
+        "nix-doom-emacs": "nix-doom-emacs",
+        "nixpkgs": "nixpkgs_2",
+        "stacklock2nix": "stacklock2nix"
+      }
+    },
+    "stacklock2nix": {
+      "locked": {
+        "lastModified": 1782790546,
+        "narHash": "sha256-90Y3i4T/X28IcJYkWCcQdmDTftgBbYhZwjU+osxCj1k=",
+        "owner": "cdepillabout",
+        "repo": "stacklock2nix",
+        "rev": "550797146fb57220319614a62f7f791e4fdc2631",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cdepillabout",
+        "repo": "stacklock2nix",
+        "type": "github"
+      }
+    },
+    "systems": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}

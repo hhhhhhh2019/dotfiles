@@ -51,8 +51,6 @@
     ] ++ (with pkgs; [
       libreoffice
 
-      geary
-
       hunspell
       hunspellDicts.ru_RU
       hunspellDicts.en-us-large
@@ -62,11 +60,47 @@
       adw-gtk3
       papirus-icon-theme
       resources
-
+      ptyxis
       gnome-tweaks
+      geary
 
       unrar
+
+      (pkgs.stdenv.mkDerivation {
+        pname = "gnome-shell-extension-gradia-capture";
+        version = "master";
+
+        src = pkgs.fetchFromGitHub {
+          owner = "AlexanderVanhee";
+          repo = "gradia-capture";
+          rev = "f70a2127d0a9acc3c9d4d8198361fc9f4e14818f";
+          sha256 = "sha256-XruZoUTbDT/qOPmFj5/CyvQfhH6Tg0IqJ4JPVMiu5zQ=";
+        };
+
+        nativeBuildInputs = with pkgs; [
+          glib
+          gettext
+        ];
+
+        buildPhase = ''
+          runHook preBuild
+          if [ -d schemas ]; then
+            glib-compile-schemas schemas/
+          fi
+          runHook postBuild
+        '';
+
+        installPhase = ''
+          mkdir -p $out/share/gnome-shell/extensions/gradia-capture@alexandervanhee.be
+          cp -r * $out/share/gnome-shell/extensions/gradia-capture@alexandervanhee.be/
+          runHook postInstall
+        '';
+      })
     ]);
+
+    environment.gnome.excludePackages = with pkgs; [
+      gnome-console
+    ];
 
     environment.variables = {
       TESSDATA_PREFIX = "${pkgs.tesseract}/share/tessdata";
