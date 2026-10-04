@@ -14,11 +14,11 @@
         "sf-pro": "sf-pro"
       },
       "locked": {
-        "lastModified": 1787373040,
-        "narHash": "sha256-mSpL69LSAA/+cQx+v9tC2XC/DD7cUepUmhiMx0/Hw64=",
+        "lastModified": 1789419105,
+        "narHash": "sha256-T5A/AqlF4iL908aIZh45e35Mvj8lTJKq8ddS5bk7nd8=",
         "owner": "Lyndeno",
         "repo": "apple-fonts.nix",
-        "rev": "69f20e9ba294420e4b6407a827c6b5aea3afcc12",
+        "rev": "3861e2249cb244bfbc7cfab2303c152cf5f9d9e9",
         "type": "github"
       },
       "original": {
@@ -97,11 +97,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1787154171,
-        "narHash": "sha256-p6Gur6a37he4GWZk1ZuqeT+1mF1oGfATWW6YLQzY8f4=",
-        "rev": "9a0adec176ef2169568893caad131d74630fd46f",
+        "lastModified": 1790775177,
+        "narHash": "sha256-RiD5NOzx71dSgflProxOZ5h4g6IHQ6RuM0kfCyOHilM=",
+        "rev": "d5bf1e0e8c6b3e7423b88c64db5c199442b7fdb3",
         "type": "tarball",
-        "url": "https://codeberg.org/api/v1/repos/ezemtsov/ewm/archive/9a0adec176ef2169568893caad131d74630fd46f.tar.gz"
+        "url": "https://codeberg.org/api/v1/repos/ezemtsov/ewm/archive/d5bf1e0e8c6b3e7423b88c64db5c199442b7fdb3.tar.gz"
       },
       "original": {
         "type": "tarball",
@@ -129,11 +129,11 @@
         "nixpkgs-lib": "nixpkgs-lib"
       },
       "locked": {
-        "lastModified": 1787559586,
-        "narHash": "sha256-onL0VLf9vPllmT0H/OlURIU5r5t5WIEl7t4tVNKT0Nw=",
+        "lastModified": 1790898470,
+        "narHash": "sha256-zTwuwezD0w3hpga6a6P8emidzAZFyWqlNeRBlpWOOl8=",
         "owner": "hercules-ci",
         "repo": "flake-parts",
-        "rev": "9d0d87172c374f89da73c1cfe6d81ae62feac1f1",
+        "rev": "024633cd702b10285db5cb19b40ad48d2399ba60",
         "type": "github"
       },
       "original": {
@@ -184,11 +184,11 @@
     },
     "import-tree": {
       "locked": {
-        "lastModified": 1784254960,
-        "narHash": "sha256-iI88R3wHz8wTKQb5orvpc51L/Xr64AJyxid/0MKa/b8=",
+        "lastModified": 1788467110,
+        "narHash": "sha256-ljEMTXP/rH0tOvDzc9gzwww6KcHRPRnEHzd9lK48V7s=",
         "owner": "denful",
         "repo": "import-tree",
-        "rev": "4ebb10ae17d5f1ad366e7aef5b92cb8eecf24f69",
+        "rev": "eb1b52eaecc57f7c136d07ae8a93e724dfecac46",
         "type": "github"
       },
       "original": {
@@ -221,13 +221,29 @@
         "type": "github"
       }
     },
+    "linuwu-sense": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1785351033,
+        "narHash": "sha256-VA8i6kTQ4p5AqSW/jNWJOB4/I4pXV3KKIcrcZ2zHrgM=",
+        "owner": "PXDiv",
+        "repo": "Div-Linuwu-Sense",
+        "rev": "d8ea437d847268dd9fe2a49ae28d0723dd720968",
+        "type": "github"
+      },
+      "original": {
+        "owner": "PXDiv",
+        "repo": "Div-Linuwu-Sense",
+        "type": "github"
+      }
+    },
     "nix-flatpak": {
       "locked": {
-        "lastModified": 1783368811,
-        "narHash": "sha256-0H8jDwR4Kegb3heaTrH1ftbgKfZVDT8JE+46uXxDy/Q=",
+        "lastModified": 1790428548,
+        "narHash": "sha256-OsZ/I7v3ArCrk0XOUvkiU1dFtGtE1qZTHRGjvBXIKUU=",
         "owner": "gmodena",
         "repo": "nix-flatpak",
-        "rev": "20d42f0ee98c9fe9f85e8d1de474f1409ed10d05",
+        "rev": "f1f045fc8b35ff59f88982c1752d3f3a42ca6a61",
         "type": "github"
       },
       "original": {
@@ -254,11 +270,11 @@
     },
     "nixpkgs-lib": {
       "locked": {
-        "lastModified": 1785031560,
-        "narHash": "sha256-OmshNvn2vupOFpYinLUu+1Dnpu4n7Q5N3ggGVNHpkUI=",
+        "lastModified": 1790477367,
+        "narHash": "sha256-oujbxmVKDhci2E4EM3KyAbRUgp5/IsCoiA/LfEF7OOk=",
         "owner": "nix-community",
         "repo": "nixpkgs.lib",
-        "rev": "0e79af5e3d4dcfcd676ab5ba3f95d2e3352e078c",
+        "rev": "f7cd230690d9fc982d06129f9189b101fddcfa3b",
         "type": "github"
       },
       "original": {
@@ -269,11 +285,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1787736819,
-        "narHash": "sha256-cV5xEJJK3BvhU8rEd4mC9UsmDi5qscv/kzGPhBRC5WA=",
+        "lastModified": 1790822859,
+        "narHash": "sha256-69xHQhAeMAD2wDXO7T2pcOZIF9Sga2W+JkmY2a11Ops=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "9fbb54b33e91ee4ca368e35a78e0613c720600b3",
+        "rev": "c59305bab2065cfecc4944690d9eedbb56f3a9fa",
         "type": "github"
       },
       "original": {
@@ -361,6 +377,7 @@
         "flake-parts": "flake-parts",
         "import-tree": "import-tree",
         "lanzaboote": "lanzaboote",
+        "linuwu-sense": "linuwu-sense",
         "nix-flatpak": "nix-flatpak",
         "nixpkgs": "nixpkgs_2",
         "portproton-nixos": "portproton-nixos",
@@ -415,7 +432,7 @@
     "sf-compact": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-83JwqfF9O4+gemMQXWHLRg2GNz2jHxsej1F1IkM2dug=",
+        "narHash": "sha256-KjCzuJOrNxgptsMLGaR8wcrU/bBxCpwtUGzGDcCxJTc=",
         "type": "file",
         "url": "https://devimages-cdn.apple.com/design/resources/download/SF-Compact.dmg"
       },
@@ -463,7 +480,7 @@
     "sf-pro": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-vINUEMyFmNzZRBOX2aQ4heScWur6RyA/MPmsqlMPIx4=",
+        "narHash": "sha256-dvGLO786y9ygKRSKDJlhIF6AGmn2NTJ5tBulKinPRxY=",
         "type": "file",
         "url": "https://devimages-cdn.apple.com/design/resources/download/SF-Pro.dmg"
       },

@@ -6,12 +6,21 @@
         self.nixosModules.linuwu_sense
       ];
 
+
+      boot.extraModulePackages = [ config.boot.kernelPackages.acpi_call ];
+      boot.kernelModules = [ "acpi_call" "kvm-intel" ];
+
       boot.initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "vmd" "nvme" "usb_storage" "uas" "sd_mod" "rtsx_pci_sdmmc" ];
       boot.initrd.kernelModules = [ ];
-      boot.extraModulePackages = [ ];
-      boot.kernelModules = [ "kvm-intel" ];
+      #boot.extraModulePackages = [ ];
+      #boot.kernelModules = [ "kvm-intel" ];
       boot.blacklistedKernelModules = [ ];
-      boot.kernelParams = [ ];
+      boot.kernelParams = [
+        "acpi_osi=Linux"
+        #"acpi_osi=\"Windows 2020\""
+        "snd_hda_intel.model=alc287-acer"
+        "acpi_backlight=native"
+      ];
 
       nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
       hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;

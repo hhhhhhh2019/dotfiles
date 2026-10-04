@@ -17,9 +17,9 @@
             127.0.0.1 auth3.vintagestory.at
           '';
 
-          security.pki.certificateFiles = [
-            ./vintagestory.cert
-          ];
+          services.udev.extraRules = ''
+            KERNEL=="hidraw*", ATTRS{idVendor}=="0b0e", MODE="0666", GROUP="users"
+          '';
 
           system.stateVersion = "26.05";
 

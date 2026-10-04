@@ -60,7 +60,7 @@
       adw-gtk3
       papirus-icon-theme
       resources
-      ptyxis
+      ghostty
       gnome-tweaks
       geary
 

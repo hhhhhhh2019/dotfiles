@@ -8,6 +8,8 @@
       promptInit = "";
       interactiveShellInit = ''
         source ${pkgs.grml-zsh-config}/etc/zsh/zshrc
+        HISTSIZE=10000000
+        SAVEHIST=10000000
       '';
     };
 
@@ -27,6 +29,7 @@
           set clipboard=unnamedplus
           syntax on
           filetype plugin indent on
+          set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
         '';
       };
     };

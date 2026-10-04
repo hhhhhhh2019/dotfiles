@@ -1,7 +1,7 @@
 {
   flake.nixosModules.zapret = {
     services.zapret2 = {
-      enable = true;
+      enable = false;
       profiles = {
         https = {
           parameters = [

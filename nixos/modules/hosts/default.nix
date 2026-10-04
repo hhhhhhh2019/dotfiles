@@ -7,7 +7,7 @@
       self.nixosModules.nix-config
       self.nixosModules.plymouth
       self.nixosModules.tlp
-      self.nixosModules.iwd
+      #self.nixosModules.iwd
       self.nixosModules.bluetooth
       self.nixosModules.flatpak
       self.nixosModules.printing

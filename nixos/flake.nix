@@ -18,6 +18,10 @@
       url = "https://codeberg.org/ezemtsov/ewm/archive/master.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    linuwu-sense = {
+      url = "github:PXDiv/Div-Linuwu-Sense";
+      flake = false;
+    };
   };
   outputs = inputs: inputs.flake-parts.lib.mkFlake
     { inherit inputs; }

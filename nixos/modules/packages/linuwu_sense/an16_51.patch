@@ -1,0 +1,59 @@
+diff --git a/src/linuwu_sense.c b/src/linuwu_sense.c
+index 7ba0e55..c6e48fb 100644
+--- a/src/linuwu_sense.c
++++ b/src/linuwu_sense.c
+@@ -555,6 +555,11 @@ static struct quirk_entry quirk_acer_nitro_an16_43 = {
+     .four_zone_kb = 1,
+ };
+ 
++static struct quirk_entry quirk_acer_nitro_an16_51 = {
++    .nitro_v4 = 1,
++    .four_zone_kb = 1,
++};
++
+  static struct quirk_entry quirk_acer_nitro_an515_58 = {
+     .nitro_sense = 1,
+     .four_zone_kb = 1,
+@@ -649,6 +654,15 @@ static const struct dmi_system_id acer_quirks[] __initconst = {
+         },
+         .driver_data = &quirk_acer_nitro_an16_43,
+     },
++    {
++        .callback = dmi_matched,
++        .ident = "Acer Nitro AN16-51",
++        .matches = {
++            DMI_MATCH(DMI_SYS_VENDOR, "Acer"),
++            DMI_MATCH(DMI_PRODUCT_NAME, "Nitro AN16-51"),
++        },
++        .driver_data = &quirk_acer_nitro_an16_51,
++    },
+     {
+         .callback = dmi_matched,
+         .ident = "Acer Nitro AN16-41",
+@@ -3602,7 +3616,7 @@ static ssize_t predator_fan_speed_store(struct device *dev,
+     char *token;
+     char *input_ptr = input;
+     size_t len = min(count, sizeof(input) - 1);
+-    strncpy(input, buf, len);
++    strscpy(input, buf, len);
+ 
+     if (input[len - 1] == '\n')
+     {
+@@ -4104,7 +4118,7 @@ static ssize_t four_zoned_rgb_kb_store(struct device *dev, struct device_attribu
+     char *input_ptr = input_buf;
+     size_t len = min(count, sizeof(input_buf) - 1);
+ 
+-    strncpy(input_buf, buf, len);
++    strscpy(input_buf, buf, len);
+ 
+     if (input_buf[len - 1] == '\n')
+     {
+@@ -4297,7 +4311,7 @@ static ssize_t per_zoned_rgb_kb_store(struct device *dev, struct device_attribut
+     struct per_zone_color colors;
+     char *input_ptr = str_buf;
+     len = min(count, sizeof(str_buf) - 1);
+-    strncpy(str_buf, buf, len);
++    strscpy(str_buf, buf, len);
+     if (str_buf[len - 1] == '\n')
+     {
+         str_buf[len - 1] = '\0';
